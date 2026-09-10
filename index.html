@@ -1,100 +1,1092 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>日本語Substack × Kindle著者一覧</title>
-  <meta name="description" content="日本語でSubstackを発信し、Amazon Kindleでも著書を確認できた人の一覧。現在は公開準備中です。">
-  <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #f7f7f5;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --accent: #d97706;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.75;
-    }
-    main {
-      width: min(760px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 64px 0;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.04);
-    }
-    .eyebrow {
-      color: var(--accent);
-      font-size: .82rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin: 0 0 8px;
-    }
-    h1 {
-      font-size: clamp(1.7rem, 5vw, 2.5rem);
-      line-height: 1.35;
-      margin: 0 0 20px;
-    }
-    p { margin: 0 0 16px; }
-    .muted { color: var(--muted); }
-    .status {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #fff7ed;
-      color: #9a3412;
-      font-size: .9rem;
-      font-weight: 700;
-    }
-    footer {
-      margin-top: 24px;
-      color: var(--muted);
-      font-size: .85rem;
-      text-align: center;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #111827;
-        --card: #1f2937;
-        --text: #f3f4f6;
-        --muted: #9ca3af;
-        --line: #374151;
-      }
-      .status {
-        background: #3f2a14;
-        color: #fdba74;
-      }
-    }
-    @media (max-width: 560px) {
-      main { padding: 28px 0; }
-      .card { padding: 24px 20px; border-radius: 12px; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="日本語でSubstackを発信し、Amazon Kindleでも著書を確認できた人の一覧。名前や書名で検索し、Kindle Unlimited対象作品を探せます。">
+<meta name="referrer" content="no-referrer">
+<title>日本語Substack × Kindle著者一覧</title>
+<style>
+:root{color-scheme:light;--ink:#242c35;--muted:#53616d;--paper:#fcfcfb;--line:#d8dee2;--accent:#963b25;--link:#22586f;--ku:#215b45;--ku-bg:#eaf3ed;--past:#785b13;--past-bg:#f8f2df;--surface:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:16px}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);line-height:1.75}a{color:var(--link);text-underline-offset:.2em}a:hover{text-decoration-thickness:2px}button,input,select{font:inherit}button,a,input,select{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a34a21;outline-offset:4px}input,select{color:var(--ink)}[hidden]{display:none!important}.page{width:min(1160px,calc(100% - 48px));margin:0 auto}.skip-link{position:absolute;top:8px;left:12px;z-index:5;transform:translateY(-170%);padding:8px 16px;background:white;border:2px solid var(--ink)}.skip-link:focus{transform:none}
+.site-header{padding:44px 0 27px;border-bottom:2px solid var(--ink)}.eyebrow{font-size:.8125rem;color:var(--accent);letter-spacing:.1em;font-weight:700;margin:0 0 11px}.site-header h1{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:clamp(1.65rem,3.2vw,2.4rem);letter-spacing:.025em;line-height:1.45;margin:0 0 13px;font-weight:600}.subtitle{font-size:1rem;margin:0;max-width:52em}.stats{display:flex;flex-wrap:wrap;gap:8px 25px;margin:20px 0 0;font-size:.9375rem}.stats span{white-space:nowrap}.stats strong{font-size:1.25rem;font-weight:650;margin:0 3px}.stats time{font-variant-numeric:tabular-nums}.intro{margin:23px 0;font-size:.9375rem;color:var(--muted);max-width:72em}.preview-notice{background:#fff3d7;border:1px solid #c99b3d;padding:12px;font-weight:600}
+.controls{background:#f0f3f5;padding:20px;border:1px solid var(--line);border-radius:5px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;margin:0}.control{min-width:0}.control.search{grid-column:1/-1}.control label{font-size:.875rem;font-weight:650;display:block;margin-bottom:6px}.control input,.control select{width:100%;height:47px;border:1px solid #8b98a1;border-radius:3px;background:white;padding:8px 11px;min-width:0}.control input{font-size:1rem}.control select{font-size:.9375rem}.result-line{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:24px 0 16px}.result-count{margin:0;font-size:.9375rem}.result-count strong{font-size:1.1rem}.reset{padding:8px 12px;min-height:44px;border:1px solid #99a5ad;border-radius:3px;background:white;color:var(--ink);font-size:.875rem}.reset:hover{background:#f0f3f5}.authors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}.author-card{display:flex;flex-direction:column;min-width:0;background:var(--surface);border:1px solid var(--line);border-top:3px solid #bdc7ce;border-radius:4px;padding:23px 22px 20px;overflow-wrap:anywhere}.card-meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:15px}.ku-badge{display:inline-block;font-size:.8125rem;line-height:1.5;padding:4px 9px;border-radius:3px;background:#f0f2f4;color:#4e5964;font-weight:650}.ku-yes{color:var(--ku);background:var(--ku-bg)}.ku-past{color:var(--past);background:var(--past-bg)}.ku-no{color:#654b46;background:#f2ece9}.new-label{font-size:.75rem;color:var(--accent);font-weight:650}.author-card h2{font-size:1.22rem;font-weight:700;line-height:1.65;letter-spacing:.015em;margin:0 0 8px}.publication{margin:0;font-size:.9375rem;line-height:1.8;color:var(--muted)}.author-name{margin:17px 0 21px;font-size:.875rem;line-height:1.7}.author-name span{display:block;color:var(--muted);font-size:.75rem;letter-spacing:.03em;margin-bottom:2px}.book-list{padding-top:18px;border-top:1px solid #e2e6e9;margin-bottom:21px}.book-list h3{font-size:.75rem;font-weight:500;color:var(--muted);margin:0 0 10px;letter-spacing:.035em}.book+.book{margin-top:17px;padding-top:16px;border-top:1px solid #e2e6e9}.book-title{font-size:1rem;line-height:1.8;font-weight:550;margin:0 0 10px}.amazon-link{display:inline-flex;align-items:center;justify-content:center;font-size:.875rem;min-height:44px;padding:6px 12px;border:1px solid #aebbc3;border-radius:3px;text-decoration:none;background:#fff}.amazon-link:hover{background:#f0f4f6}.card-bottom{margin-top:auto;display:flex;flex-direction:column;gap:11px}.kind-label{color:var(--muted);font-size:.75rem}.substack-link{display:flex;justify-content:center;align-items:center;min-height:46px;padding:8px 10px;border-radius:3px;border:1px solid #526e80;background:#f1f5f7;text-decoration:none;color:#244e65;font-size:.9375rem;font-weight:600}.substack-link:hover{background:#e5eef3}.empty{padding:38px 20px;margin:0;border:1px dashed #a8b4bd;text-align:center;background:#fff}.empty h2{font-size:1.125rem;margin:0 0 10px}.empty p{color:var(--muted);margin:0}.site-footer{margin:42px 0 0;padding:23px 0 30px;border-top:1px solid var(--line);color:var(--muted);font-size:.8125rem;line-height:1.85}.site-footer p{margin:0 0 8px}.back-top{display:inline-block;padding:6px 0;min-height:40px}.noscript{padding:12px 16px;border:1px solid var(--line);background:#fff;margin-bottom:20px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1000px){.authors{grid-template-columns:repeat(2,minmax(0,1fr))}.controls{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:620px){.page{width:calc(100% - 32px)}.site-header{padding-top:26px;padding-bottom:23px}.site-header h1{font-size:1.6rem}.stats{gap:5px 17px;margin-top:17px}.stats .last-checked{flex-basis:100%;margin-top:2px}.intro{font-size:.875rem;margin:19px 0}.controls{padding:16px;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}.control.sort{grid-column:1/-1}.control select{font-size:1rem;padding-left:8px}.authors{grid-template-columns:minmax(0,1fr);gap:17px}.author-card{padding:21px 20px}.result-line{margin-top:19px}.reset{font-size:.8125rem}.site-footer{margin-top:30px}}
+.site-header h1 span{white-space:nowrap}
+@media(max-width:620px){.site-header{padding-top:22px;padding-bottom:18px}.site-header h1{font-size:1.5rem;line-height:1.4;margin-bottom:10px}.subtitle{font-size:.875rem;line-height:1.7}.stats{font-size:.875rem;line-height:1.5;margin-top:12px;gap:4px 14px}.stats strong{font-size:1.125rem}.intro{margin:15px 0;line-height:1.65}.controls{padding:14px;gap:12px 10px}.control label{line-height:1.5;margin-bottom:4px}.result-line{margin-top:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media print{.controls,.reset,.back-top,.skip-link{display:none!important}.page{width:100%}.authors{display:block}.author-card{break-inside:avoid;margin-bottom:12px}.site-header{padding-top:0}.author-card[hidden]{display:none!important}}
+</style>
 </head>
-<body>
-  <main>
-    <section class="card" aria-labelledby="page-title">
-      <p class="eyebrow">Substack × Kindle</p>
-      <h1 id="page-title">日本語Substack × Kindle著者一覧</h1>
-      <p>日本語でSubstackを発信し、Amazon Kindleでも著書を確認できた人をまとめる公開ページです。</p>
-      <p class="muted">現在は公開準備中です。調査済みデータの再検証と、検索・絞り込みに対応した一覧ページへ更新予定です。</p>
-      <span class="status">公開準備中</span>
-    </section>
-    <footer>nekomagu1002-lab / substack-kindle-authors</footer>
-  </main>
+<body id="top">
+<a class="skip-link" href="#directory">著者一覧へスキップ</a>
+<div class="page">
+<header class="site-header">
+<h1><span>日本語Substack</span> <span>× Kindle著者一覧</span></h1>
+<p class="subtitle">日本語でSubstackを発信し、Amazon Kindleでも著書を確認できた人を調べました。</p>
+<p class="stats"><span>今回確認できた人 <strong id="total-authors">128</strong> 人</span><span>KU確認 <strong id="total-ku">67</strong> 人</span><span class="last-checked">最終確認 <time datetime="2026-09-10">2026-09-10</time></span></p>
+</header>
+<main>
+
+<p class="intro">公開情報で本人と著書を確認。網羅的ではなく、誤り・漏れやKUの変動があり得ます。</p>
+<form id="filters" class="controls" aria-label="著者の検索と絞り込み" hidden>
+<div class="control search"><label for="query">名前・Publication・著者名・書名で検索</label><input id="query" name="query" type="search" placeholder="名前や気になる本を入力" autocomplete="off" enterkeyhint="search"></div>
+<div class="control"><label for="ku-filter">Kindle Unlimited</label><select id="ku-filter" name="ku"><option value="all">すべて</option><option value="yes">KU対象</option><option value="past">KU過去確認</option><option value="unknown">KU不明</option><option value="no">KU対象外</option></select></div>
+<div class="control"><label for="kind-filter">出版形態</label><select id="kind-filter" name="kind"><option value="all">すべて</option><option value="kdp">KDP個人出版</option><option value="commercial">商業出版</option><option value="other">その他</option></select></div>
+<div class="control sort"><label for="sort">並び替え</label><select id="sort" name="sort"><option value="name">名前順</option><option value="publication">Publication名順</option><option value="ku">KU対象優先</option><option value="new">今回追加を先に</option></select></div>
+</form>
+<noscript><p class="noscript">すべての著者を名前順で表示しています。検索・絞り込み・並び替えにはJavaScriptが必要です。</p></noscript>
+<div class="result-line"><p class="result-count" id="result-count" role="status" aria-live="polite" aria-atomic="true"><strong>128</strong> 人を表示 / 全128人</p><button class="reset" id="reset" type="button" hidden>条件をリセット</button></div>
+<div id="directory" class="authors" tabindex="-1" aria-label="著者一覧"><article class="author-card" data-name="Amo│語学とコンテンツで夢を形にする" data-publication="Amo の 語学ライフ" data-author="Amo" data-books="語学に悩んできた私が過去の自分に伝えたいこと: 国際結婚10年でたどり着いた答え (語学ライフ文庫)" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-0">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-0">Amo│語学とコンテンツで夢を形にする</h2>
+  <p class="publication">Amo の 語学ライフ</p>
+  <p class="author-name"><span>Kindle著者名</span>Amo</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">語学に悩んできた私が過去の自分に伝えたいこと: 国際結婚10年でたどり着いた答え (語学ライフ文庫)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0F4LSZF72" target="_blank" rel="noopener noreferrer" aria-label="語学に悩んできた私が過去の自分に伝えたいこと: 国際結婚10年でたどり着いた答え (語学ライフ文庫)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://amolanguage.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Amo│語学とコンテンツで夢を形にするのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="Ano-HARAYAMA" data-publication="恋人目線マーケティング" data-author="原山友弘" data-books="アンガーマネジメント: 怒りにまかせて行動しない" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-1">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-1">Ano-HARAYAMA</h2>
+  <p class="publication">恋人目線マーケティング</p>
+  <p class="author-name"><span>Kindle著者名</span>原山友弘</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">アンガーマネジメント: 怒りにまかせて行動しない</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0HFDWZ26R" target="_blank" rel="noopener noreferrer" aria-label="アンガーマネジメント: 怒りにまかせて行動しないをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://harayama.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Ano-HARAYAMAのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="DJあおい" data-publication="DJあおい" data-author="DJあおい" data-books="ていうか、男は「好きだよ」と嘘をつき、女は「嫌い」と嘘をつくんです。 (幻冬舎文庫)" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-2">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-2">DJあおい</h2>
+  <p class="publication">DJあおい</p>
+  <p class="author-name"><span>Kindle著者名</span>DJあおい</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ていうか、男は「好きだよ」と嘘をつき、女は「嫌い」と嘘をつくんです。 (幻冬舎文庫)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B07N78YT4N" target="_blank" rel="noopener noreferrer" aria-label="ていうか、男は「好きだよ」と嘘をつき、女は「嫌い」と嘘をつくんです。 (幻冬舎文庫)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://djaoi.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="DJあおいのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="hajihaji｜いしいはじめ" data-publication="AIで無理せず楽しむシニアライフ・ラボラトリー" data-author="石井肇" data-books="くうちゃんのひとりでできるもん！: やればできる　なんでもできる　どんどんやってみよう" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-3">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-3">hajihaji｜いしいはじめ</h2>
+  <p class="publication">AIで無理せず楽しむシニアライフ・ラボラトリー</p>
+  <p class="author-name"><span>Kindle著者名</span>石井肇</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">くうちゃんのひとりでできるもん！: やればできる　なんでもできる　どんどんやってみよう</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DH2ZJ748" target="_blank" rel="noopener noreferrer" aria-label="くうちゃんのひとりでできるもん！: やればできる　なんでもできる　どんどんやってみようをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://hajihajinews.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="hajihaji｜いしいはじめのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="Hisa" data-publication="Hisaの本棚" data-author="Hisa" data-books="アメイジング・グレイス～二人の波動～" data-ku="yes" data-kind="kdp" data-new="1" aria-labelledby="person-4">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-4">Hisa</h2>
+  <p class="publication">Hisaの本棚</p>
+  <p class="author-name"><span>Kindle著者名</span>Hisa</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">アメイジング・グレイス～二人の波動～</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FXRLZ3NX" target="_blank" rel="noopener noreferrer" aria-label="アメイジング・グレイス～二人の波動～をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://hash13.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="HisaのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="hkblog" data-publication="hkblog" data-author="HK" data-books="ブラジルの思い出: ネットのない時代のシンプルな暮らし" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-5">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-5">hkblog</h2>
+  <p class="publication">hkblog</p>
+  <p class="author-name"><span>Kindle著者名</span>HK</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ブラジルの思い出: ネットのない時代のシンプルな暮らし</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0CV7JQZ8B" target="_blank" rel="noopener noreferrer" aria-label="ブラジルの思い出: ネットのない時代のシンプルな暮らしをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://hkblog.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="hkblogのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="KEITO【AI&amp;Web】" data-publication="KEITOのメルマガ" data-author="KEITO" data-books="仕事がはかどる！知識ゼロからはじめるAI活用術　ChatGPT・Gemini・Claude対応／無料で始める業務効率化／KEITO著(仕事に活きるAIの使い方　登録者数20万人のAI解説YouTuberが教えます！）" data-ku="yes" data-kind="commercial" data-new="0" aria-labelledby="person-6">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-6">KEITO【AI&amp;Web】</h2>
+  <p class="publication">KEITOのメルマガ</p>
+  <p class="author-name"><span>Kindle著者名</span>KEITO</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">仕事がはかどる！知識ゼロからはじめるAI活用術　ChatGPT・Gemini・Claude対応／無料で始める業務効率化／KEITO著(仕事に活きるAIの使い方　登録者数20万人のAI解説YouTuberが教えます！）</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H69TXKXT" target="_blank" rel="noopener noreferrer" aria-label="仕事がはかどる！知識ゼロからはじめるAI活用術　ChatGPT・Gemini・Claude対応／無料で始める業務効率化／KEITO著(仕事に活きるAIの使い方　登録者数20万人のAI解説YouTuberが教えます！）をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://keitoaiweb.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="KEITO【AI&amp;Web】のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ken Honda" data-publication="ken’s Substack" data-author="本田健" data-books="ユダヤ人大富豪の教え　幸せな金持ちになる17の秘訣 (だいわ文庫)" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-7">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-7">ken Honda</h2>
+  <p class="publication">ken’s Substack</p>
+  <p class="author-name"><span>Kindle著者名</span>本田健</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ユダヤ人大富豪の教え　幸せな金持ちになる17の秘訣 (だいわ文庫)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B00EXODAZG" target="_blank" rel="noopener noreferrer" aria-label="ユダヤ人大富豪の教え　幸せな金持ちになる17の秘訣 (だいわ文庫)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://substack.com/@kenhonda" target="_blank" rel="noopener noreferrer" aria-label="ken HondaのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="Koki Shimazu/ 嶋津 幸樹" data-publication="英単語研究" data-author="嶋津幸樹" data-books="英検2級 速読で覚える英単語 (速読探究)" data-ku="yes" data-kind="commercial" data-new="0" aria-labelledby="person-8">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-8">Koki Shimazu/ 嶋津 幸樹</h2>
+  <p class="publication">英単語研究</p>
+  <p class="author-name"><span>Kindle著者名</span>嶋津幸樹</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">英検2級 速読で覚える英単語 (速読探究)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0F2F64NR1" target="_blank" rel="noopener noreferrer" aria-label="英検2級 速読で覚える英単語 (速読探究)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://kokishimazu.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Koki Shimazu/ 嶋津 幸樹のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="Marina Fujiwara" data-publication="無駄づくりクラブ" data-author="藤原麻里菜" data-books="考える術 人と違うことが次々ひらめくすごい思考ワザ71" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-9">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-9">Marina Fujiwara</h2>
+  <p class="publication">無駄づくりクラブ</p>
+  <p class="author-name"><span>Kindle著者名</span>藤原麻里菜</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">考える術 人と違うことが次々ひらめくすごい思考ワザ71</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B08N694ZFZ" target="_blank" rel="noopener noreferrer" aria-label="考える術 人と違うことが次々ひらめくすごい思考ワザ71をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://marinafujiwara.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Marina FujiwaraのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="masa" data-publication="人生これから研究所" data-author="AI CEO・LP研究所" data-books="AI社長、売上0円。: AIに会社を任せた2ヶ月の全記録" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-10">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-10">masa</h2>
+  <p class="publication">人生これから研究所</p>
+  <p class="author-name"><span>Kindle著者名</span>AI CEO・LP研究所</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">AI社長、売上0円。: AIに会社を任せた2ヶ月の全記録</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H6LSD6GG" target="_blank" rel="noopener noreferrer" aria-label="AI社長、売上0円。: AIに会社を任せた2ヶ月の全記録をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://masamark.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="masaのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="Masataka Tashiro" data-publication="田代政貴｜ありがとうプロジェクト｜感謝研究｜ご縁つなぎの旅" data-author="田代政貴（共著：樺沢紫苑）" data-books="感謝脳" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-11">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-11">Masataka Tashiro</h2>
+  <p class="publication">田代政貴｜ありがとうプロジェクト｜感謝研究｜ご縁つなぎの旅</p>
+  <p class="author-name"><span>Kindle著者名</span>田代政貴（共著：樺沢紫苑）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">感謝脳</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DR9P7NLD" target="_blank" rel="noopener noreferrer" aria-label="感謝脳をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://masatakatashirojp.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Masataka TashiroのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="moon" data-publication="moon｜作家" data-author="moon（共著：ノーン）" data-books="世界一シンプルな書き方の教室: 書きベタからの脱却。一生使える、究極の文章術。 (もみじ出版)" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-12">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-12">moon</h2>
+  <p class="publication">moon｜作家</p>
+  <p class="author-name"><span>Kindle著者名</span>moon（共著：ノーン）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">世界一シンプルな書き方の教室: 書きベタからの脱却。一生使える、究極の文章術。 (もみじ出版)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B09C8LG3HT" target="_blank" rel="noopener noreferrer" aria-label="世界一シンプルな書き方の教室: 書きベタからの脱却。一生使える、究極の文章術。 (もみじ出版)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://moonwebwriter.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="moonのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="Nozomi Tanaka / 田中志" data-publication="こーべ通信" data-author="田中志" data-books="仕事がデキる人のたたき台のキホン" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-13">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-13">Nozomi Tanaka / 田中志</h2>
+  <p class="publication">こーべ通信</p>
+  <p class="author-name"><span>Kindle著者名</span>田中志</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">仕事がデキる人のたたき台のキホン</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0C9SVYQBG" target="_blank" rel="noopener noreferrer" aria-label="仕事がデキる人のたたき台のキホンをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://cobe.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Nozomi Tanaka / 田中志のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="Rii2/リツ@アーティスト" data-publication="Rii2/リツ@アーティスト（プロフィール・Notes）" data-author="Rii2" data-books="Procreateハンドブック: iPadで描くイラストスタイルはじめの一歩" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-14">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-14">Rii2/リツ@アーティスト</h2>
+  <p class="publication">Rii2/リツ@アーティスト（プロフィール・Notes）</p>
+  <p class="author-name"><span>Kindle著者名</span>Rii2</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">Procreateハンドブック: iPadで描くイラストスタイルはじめの一歩</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B09QFYQ6J8" target="_blank" rel="noopener noreferrer" aria-label="Procreateハンドブック: iPadで描くイラストスタイルはじめの一歩をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://substack.com/@rii24" target="_blank" rel="noopener noreferrer" aria-label="Rii2/リツ@アーティストのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="Shinya" data-publication="Shinya@AIマンガ" data-author="Shinya" data-books="ChatGPT× Canvaで作る！短編AIマンガの教科書: ChatGPTで始める初めてのマンガ制作！200ページ描いて分かった完成させるコツ（ストーリー、マインド、キャラ生成、時間管理）" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-15">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-15">Shinya</h2>
+  <p class="publication">Shinya@AIマンガ</p>
+  <p class="author-name"><span>Kindle著者名</span>Shinya</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ChatGPT× Canvaで作る！短編AIマンガの教科書: ChatGPTで始める初めてのマンガ制作！200ページ描いて分かった完成させるコツ（ストーリー、マインド、キャラ生成、時間管理）</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DHQCJQ89" target="_blank" rel="noopener noreferrer" aria-label="ChatGPT× Canvaで作る！短編AIマンガの教科書: ChatGPTで始める初めてのマンガ制作！200ページ描いて分かった完成させるコツ（ストーリー、マインド、キャラ生成、時間管理）をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://shinyajp.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ShinyaのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="sotaro" data-publication="sotaro@ハゴロモ社長" data-author="CNP出版部（正式共著者：sotaro）" data-books="シン・コミュニティマーケティング" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-16">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-16">sotaro</h2>
+  <p class="publication">sotaro@ハゴロモ社長</p>
+  <p class="author-name"><span>Kindle著者名</span>CNP出版部（正式共著者：sotaro）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">シン・コミュニティマーケティング</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DTHBF8QH" target="_blank" rel="noopener noreferrer" aria-label="シン・コミュニティマーケティングをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://sotaro0914.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="sotaroのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="Tokimaru Tanaka" data-publication="Tokimaru Tanaka" data-author="Tokimaru Tanaka" data-books="ミニマリスト・ソロプレナー" data-ku="unknown" data-kind="kdp" data-new="0" aria-labelledby="person-17">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-17">Tokimaru Tanaka</h2>
+  <p class="publication">Tokimaru Tanaka</p>
+  <p class="author-name"><span>Kindle著者名</span>Tokimaru Tanaka</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ミニマリスト・ソロプレナー</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GMDT319L" target="_blank" rel="noopener noreferrer" aria-label="ミニマリスト・ソロプレナーをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://tokimarutanaka.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Tokimaru TanakaのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="Yasushi Takashima 高島康司" data-publication="Yasushi の Substack" data-author="高島康司" data-books="シリーズ、意識の進化のために 　第一回 銀河のパルスと意識の進化: 過渡期を生き抜くための指針 (意識の進化のためにブックス)" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-18">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-18">Yasushi Takashima 高島康司</h2>
+  <p class="publication">Yasushi の Substack</p>
+  <p class="author-name"><span>Kindle著者名</span>高島康司</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">シリーズ、意識の進化のために 　第一回 銀河のパルスと意識の進化: 過渡期を生き抜くための指針 (意識の進化のためにブックス)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GPKM3H24" target="_blank" rel="noopener noreferrer" aria-label="シリーズ、意識の進化のために 　第一回 銀河のパルスと意識の進化: 過渡期を生き抜くための指針 (意識の進化のためにブックス)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://ytakashima.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="Yasushi Takashima 高島康司のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="YOHEI HAYAKAWA" data-publication="LIFE UPDATE" data-author="早川洋平" data-books="会う力―シンプルにして最強の「アポ」の教科書―" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-19">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-19">YOHEI HAYAKAWA</h2>
+  <p class="publication">LIFE UPDATE</p>
+  <p class="author-name"><span>Kindle著者名</span>早川洋平</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">会う力―シンプルにして最強の「アポ」の教科書―</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DVL982ND" target="_blank" rel="noopener noreferrer" aria-label="会う力―シンプルにして最強の「アポ」の教科書―をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://yoheihayakawa.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="YOHEI HAYAKAWAのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="YURI（結梨嘉望）" data-publication="YURI（結梨嘉望）" data-author="YURI（結梨嘉望）" data-books="億女神スパイラル" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-20">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-20">YURI（結梨嘉望）</h2>
+  <p class="publication">YURI（結梨嘉望）</p>
+  <p class="author-name"><span>Kindle著者名</span>YURI（結梨嘉望）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">億女神スパイラル</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FGCW8JBM" target="_blank" rel="noopener noreferrer" aria-label="億女神スパイラルをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://yuriyoshimi125.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="YURI（結梨嘉望）のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="アンジー" data-publication="アンジー旅する恋愛作家" data-author="安藤房子" data-books="ママ、だいじょうぶ。我慢しなくていいんだよ。 (中経出版)" data-ku="past" data-kind="commercial" data-new="0" aria-labelledby="person-21">
+  <div class="card-meta"><span class="ku-badge ku-past">過去にKU確認</span></div>
+  <h2 id="person-21">アンジー</h2>
+  <p class="publication">アンジー旅する恋愛作家</p>
+  <p class="author-name"><span>Kindle著者名</span>安藤房子</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ママ、だいじょうぶ。我慢しなくていいんだよ。 (中経出版)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B00O4QJWPA" target="_blank" rel="noopener noreferrer" aria-label="ママ、だいじょうぶ。我慢しなくていいんだよ。 (中経出版)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://anzy7love.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="アンジーのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="イケハヤ@ゲーム制作中" data-publication="イケハヤラジオ＆コラム" data-author="イケハヤ" data-books="ジャズ奏者のようにはたらこう　：AI時代を生き抜く非常識に生産的な11+1のワークスタイル" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-22">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-22">イケハヤ@ゲーム制作中</h2>
+  <p class="publication">イケハヤラジオ＆コラム</p>
+  <p class="author-name"><span>Kindle著者名</span>イケハヤ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ジャズ奏者のようにはたらこう　：AI時代を生き抜く非常識に生産的な11+1のワークスタイル</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DQ7JK1J3" target="_blank" rel="noopener noreferrer" aria-label="ジャズ奏者のようにはたらこう　：AI時代を生き抜く非常識に生産的な11+1のワークスタイルをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://ihayato.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="イケハヤ@ゲーム制作中のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="うと" data-publication="うと| メルマガ×中単価で売る人" data-author="うと" data-books="【note副業】”ゆるく稼ぐ”収益化ガイドブック" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-23">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-23">うと</h2>
+  <p class="publication">うと| メルマガ×中単価で売る人</p>
+  <p class="author-name"><span>Kindle著者名</span>うと</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">【note副業】”ゆるく稼ぐ”収益化ガイドブック</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FWD74KQP" target="_blank" rel="noopener noreferrer" aria-label="【note副業】”ゆるく稼ぐ”収益化ガイドブックをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://utomarket.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="うとのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ウミノ｜サブスタックの教科書著者" data-publication="裏・Substackの教科書" data-author="ウミノ チヅコ" data-books="AI時短術100 ママによるママのためのChatGPT本：100個のプロンプトつき: 家事と子育てに特化した画期的なChatGPTの使い方・コピペでOKなプロンプトつきだからAI初心者でもすぐ実践できる (40歳からのAI活用塾) ChatGPT×音声配信: プロンプト付きですぐに実践！AI×PDCAサイクルで実現するポッドキャストの成長戦略 (40歳からのAI活用塾) のりものABCえほん: 乗り物で楽しく英語を覚える知育絵本　1歳2歳3歳4歳5歳　はたらくくるま わくわくえいごえほん" data-ku="yes" data-kind="kdp" data-new="1" aria-labelledby="person-24">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-24">ウミノ｜サブスタックの教科書著者</h2>
+  <p class="publication">裏・Substackの教科書</p>
+  <p class="author-name"><span>Kindle著者名</span>ウミノ チヅコ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">AI時短術100 ママによるママのためのChatGPT本：100個のプロンプトつき: 家事と子育てに特化した画期的なChatGPTの使い方・コピペでOKなプロンプトつきだからAI初心者でもすぐ実践できる (40歳からのAI活用塾)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FCTQ8QCT" target="_blank" rel="noopener noreferrer" aria-label="AI時短術100 ママによるママのためのChatGPT本：100個のプロンプトつき: 家事と子育てに特化した画期的なChatGPTの使い方・コピペでOKなプロンプトつきだからAI初心者でもすぐ実践できる (40歳からのAI活用塾)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div><div class="book"><p class="book-title">ChatGPT×音声配信: プロンプト付きですぐに実践！AI×PDCAサイクルで実現するポッドキャストの成長戦略 (40歳からのAI活用塾)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DKKQ1VY6" target="_blank" rel="noopener noreferrer" aria-label="ChatGPT×音声配信: プロンプト付きですぐに実践！AI×PDCAサイクルで実現するポッドキャストの成長戦略 (40歳からのAI活用塾)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div><div class="book"><p class="book-title">のりものABCえほん: 乗り物で楽しく英語を覚える知育絵本　1歳2歳3歳4歳5歳　はたらくくるま わくわくえいごえほん</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0D3S4VN83" target="_blank" rel="noopener noreferrer" aria-label="のりものABCえほん: 乗り物で楽しく英語を覚える知育絵本　1歳2歳3歳4歳5歳　はたらくくるま わくわくえいごえほんをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://uminoai.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ウミノ｜サブスタックの教科書著者のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="オグ" data-publication="オグ🍴東京グルメで世界一周✈️" data-author="海外グルメマニア おぐグルメ" data-books="東京グルメで世界一周: 世界100ヵ国の料理" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-25">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-25">オグ</h2>
+  <p class="publication">オグ🍴東京グルメで世界一周✈️</p>
+  <p class="author-name"><span>Kindle著者名</span>海外グルメマニア おぐグルメ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">東京グルメで世界一周: 世界100ヵ国の料理</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0CT4YDY83" target="_blank" rel="noopener noreferrer" aria-label="東京グルメで世界一周: 世界100ヵ国の料理をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://ogugourmet.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="オグのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="かたり屋シン" data-publication="古代史エンタメ×Kindle作家_かたり屋シン" data-author="騙り屋シン" data-books="震" data-ku="unknown" data-kind="kdp" data-new="1" aria-labelledby="person-26">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-26">かたり屋シン</h2>
+  <p class="publication">古代史エンタメ×Kindle作家_かたり屋シン</p>
+  <p class="author-name"><span>Kindle著者名</span>騙り屋シン</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">震</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GR671NR9" target="_blank" rel="noopener noreferrer" aria-label="震をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://katariya1116.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="かたり屋シンのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="キャリア孔明" data-publication="キャリア孔明 | SNS時代を生き抜くニュースレター" data-author="キャリア孔明" data-books="顔を出さずにSNSで稼ぐ人が、やっていること" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-27">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-27">キャリア孔明</h2>
+  <p class="publication">キャリア孔明 | SNS時代を生き抜くニュースレター</p>
+  <p class="author-name"><span>Kindle著者名</span>キャリア孔明</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">顔を出さずにSNSで稼ぐ人が、やっていること</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H4X4DJ7B" target="_blank" rel="noopener noreferrer" aria-label="顔を出さずにSNSで稼ぐ人が、やっていることをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://careerkoumei.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="キャリア孔明のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="クリーヴ | 混ぜる人 Cleve" data-publication="クリーヴ | 混ぜる人 Cleve" data-author="クリーヴ" data-books="はちみつは、なぜ混ざらないのか" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-28">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-28">クリーヴ | 混ぜる人 Cleve</h2>
+  <p class="publication">クリーヴ | 混ぜる人 Cleve</p>
+  <p class="author-name"><span>Kindle著者名</span>クリーヴ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">はちみつは、なぜ混ざらないのか</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H9W9Z8VB" target="_blank" rel="noopener noreferrer" aria-label="はちみつは、なぜ混ざらないのかをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://clevelander1103.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="クリーヴ | 混ぜる人 CleveのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="けんいち＠「月刊電子文藝」編集長" data-publication="けんいち＠Substack攻略日記発信「月刊電子文藝」編集長" data-author="けんいち" data-books="Substack サブスタック完全スタートガイド: サブスタックの始め方・初期設定から収益化まで、substackとnoteとの違いと賢い使い分けをやさしく解説 AI" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-29">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-29">けんいち＠「月刊電子文藝」編集長</h2>
+  <p class="publication">けんいち＠Substack攻略日記発信「月刊電子文藝」編集長</p>
+  <p class="author-name"><span>Kindle著者名</span>けんいち</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">Substack サブスタック完全スタートガイド: サブスタックの始め方・初期設定から収益化まで、substackとnoteとの違いと賢い使い分けをやさしく解説 AI</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H1HF282Y" target="_blank" rel="noopener noreferrer" aria-label="Substack サブスタック完全スタートガイド: サブスタックの始め方・初期設定から収益化まで、substackとnoteとの違いと賢い使い分けをやさしく解説 AIをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://kenichikindle.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="けんいち＠「月刊電子文藝」編集長のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ことさと｜医療•介護•子育てがスッとわかる" data-publication="ことさとのやさしいことば" data-author="ことばのしごと さとう" data-books="親の介護で後悔しない本: 「食べられない、伝わらない」その時、家族ができること。言語聴覚士20年の知恵「施設選びのリアル」と、実父の看取り・遠距離介護で思い知った家族の葛藤" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-30">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-30">ことさと｜医療•介護•子育てがスッとわかる</h2>
+  <p class="publication">ことさとのやさしいことば</p>
+  <p class="author-name"><span>Kindle著者名</span>ことばのしごと さとう</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">親の介護で後悔しない本: 「食べられない、伝わらない」その時、家族ができること。言語聴覚士20年の知恵「施設選びのリアル」と、実父の看取り・遠距離介護で思い知った家族の葛藤</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GXWF2GL4" target="_blank" rel="noopener noreferrer" aria-label="親の介護で後悔しない本: 「食べられない、伝わらない」その時、家族ができること。言語聴覚士20年の知恵「施設選びのリアル」と、実父の看取り・遠距離介護で思い知った家族の葛藤をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://kotosato.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ことさと｜医療•介護•子育てがスッとわかるのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ゴリアス" data-publication="ゴリアス" data-author="ゴリアス" data-books="「普通」が苦手な人ほどAIで稼げる理由" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-31">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-31">ゴリアス</h2>
+  <p class="publication">ゴリアス</p>
+  <p class="author-name"><span>Kindle著者名</span>ゴリアス</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">「普通」が苦手な人ほどAIで稼げる理由</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H9HYQNT9" target="_blank" rel="noopener noreferrer" aria-label="「普通」が苦手な人ほどAIで稼げる理由をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://goriasu.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ゴリアスのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="さいとう| ベストセラーKindle作家" data-publication="さいとうのSubstack" data-author="さいとう" data-books="Kindle出版で月3万円稼いだ方法: 副業初心者の私が在宅×AIで始めた作家物語" data-ku="past" data-kind="kdp" data-new="0" aria-labelledby="person-32">
+  <div class="card-meta"><span class="ku-badge ku-past">過去にKU確認</span></div>
+  <h2 id="person-32">さいとう| ベストセラーKindle作家</h2>
+  <p class="publication">さいとうのSubstack</p>
+  <p class="author-name"><span>Kindle著者名</span>さいとう</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">Kindle出版で月3万円稼いだ方法: 副業初心者の私が在宅×AIで始めた作家物語</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GXGH43FW" target="_blank" rel="noopener noreferrer" aria-label="Kindle出版で月3万円稼いだ方法: 副業初心者の私が在宅×AIで始めた作家物語をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://substack.com/@saitokdp" target="_blank" rel="noopener noreferrer" aria-label="さいとう| ベストセラーKindle作家のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="サト愛＠自由人生実験家" data-publication="サト愛の自由人生実験コラム" data-author="サト愛" data-books="人生のOSを幸運に書き換える「言い換え」の教科書" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-33">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-33">サト愛＠自由人生実験家</h2>
+  <p class="publication">サト愛の自由人生実験コラム</p>
+  <p class="author-name"><span>Kindle著者名</span>サト愛</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">人生のOSを幸運に書き換える「言い換え」の教科書</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GNDVCQ1D" target="_blank" rel="noopener noreferrer" aria-label="人生のOSを幸運に書き換える「言い換え」の教科書をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://satoai3.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="サト愛＠自由人生実験家のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="しばたみか｜Tea Party for Peace" data-publication="Tea Queen" data-author="しばたみか" data-books="お悩み別 こころとからだを癒すレシピ ハーブティーブレンド100" data-ku="yes" data-kind="commercial" data-new="0" aria-labelledby="person-34">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-34">しばたみか｜Tea Party for Peace</h2>
+  <p class="publication">Tea Queen</p>
+  <p class="author-name"><span>Kindle著者名</span>しばたみか</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">お悩み別 こころとからだを癒すレシピ ハーブティーブレンド100</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B07J9MX9J2" target="_blank" rel="noopener noreferrer" aria-label="お悩み別 こころとからだを癒すレシピ ハーブティーブレンド100をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://substack.com/@micatea" target="_blank" rel="noopener noreferrer" aria-label="しばたみか｜Tea Party for PeaceのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="しゅうへい" data-publication="AIで仕事をサボるコラム" data-author="しゅうへい" data-books="お金の不安ゼロ化メソッド" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-35">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-35">しゅうへい</h2>
+  <p class="publication">AIで仕事をサボるコラム</p>
+  <p class="author-name"><span>Kindle著者名</span>しゅうへい</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">お金の不安ゼロ化メソッド</p><a class="amazon-link" href="https://www.amazon.co.jp/s?i=digital-text&amp;k=%E3%81%97%E3%82%85%E3%81%86%E3%81%B8%E3%81%84%20%E3%81%8A%E9%87%91%E3%81%AE%E4%B8%8D%E5%AE%89%E3%82%BC%E3%83%AD%E5%8C%96%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89" target="_blank" rel="noopener noreferrer" aria-label="お金の不安ゼロ化メソッドをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://shupeiman.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="しゅうへいのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="シュナプーン" data-publication="シュナプーン" data-author="シュナプーン" data-books="AIとクリスタで漫画を描いてみよう！: 【全編マンガ解説】フォロワー1万人のプロが教える、仕事で使えるAI漫画術 (イケハヤ書房)" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-36">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-36">シュナプーン</h2>
+  <p class="publication">シュナプーン</p>
+  <p class="author-name"><span>Kindle著者名</span>シュナプーン</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">AIとクリスタで漫画を描いてみよう！: 【全編マンガ解説】フォロワー1万人のプロが教える、仕事で使えるAI漫画術 (イケハヤ書房)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0G3DV4MKY" target="_blank" rel="noopener noreferrer" aria-label="AIとクリスタで漫画を描いてみよう！: 【全編マンガ解説】フォロワー1万人のプロが教える、仕事で使えるAI漫画術 (イケハヤ書房)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://schnapoon.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="シュナプーンのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="シンプリストやまだ@noteで妻と4人の子ども養ってます" data-publication="マネタイズ海賊団" data-author="シンプリストやまだ" data-books="不登校の子どもとお金の話: 時短勤務×書く副業で家族6人を守った父親の全記録" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-37">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-37">シンプリストやまだ@noteで妻と4人の子ども養ってます</h2>
+  <p class="publication">マネタイズ海賊団</p>
+  <p class="author-name"><span>Kindle著者名</span>シンプリストやまだ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">不登校の子どもとお金の話: 時短勤務×書く副業で家族6人を守った父親の全記録</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0HDKDLXKM" target="_blank" rel="noopener noreferrer" aria-label="不登校の子どもとお金の話: 時短勤務×書く副業で家族6人を守った父親の全記録をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://yamadasimple.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="シンプリストやまだ@noteで妻と4人の子ども養ってますのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="セカイノココロ｜感情整理・行動DESIGNプロデューサー" data-publication="SEKAI JOURNAL by Sekai no Kokoro" data-author="セカイノココロ" data-books="50代から始める女性のための感情整理術7step: 不安や迷いを整え、自分らしい人生をもう一度動かし始める７つのステップ 7stepシリーズ" data-ku="past" data-kind="kdp" data-new="0" aria-labelledby="person-38">
+  <div class="card-meta"><span class="ku-badge ku-past">過去にKU確認</span></div>
+  <h2 id="person-38">セカイノココロ｜感情整理・行動DESIGNプロデューサー</h2>
+  <p class="publication">SEKAI JOURNAL by Sekai no Kokoro</p>
+  <p class="author-name"><span>Kindle著者名</span>セカイノココロ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">50代から始める女性のための感情整理術7step: 不安や迷いを整え、自分らしい人生をもう一度動かし始める７つのステップ 7stepシリーズ</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GGWXVHHX" target="_blank" rel="noopener noreferrer" aria-label="50代から始める女性のための感情整理術7step: 不安や迷いを整え、自分らしい人生をもう一度動かし始める７つのステップ 7stepシリーズをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://sekainokokoro.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="セカイノココロ｜感情整理・行動DESIGNプロデューサーのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="タケウチ" data-publication="タケウチ@1記事635万円" data-author="竹内洋平" data-books="100倍稼ぐ人のブログ術: 1記事で635万円稼いだ アフィリエイト戦略を伝授！アクセス不要！文章力不要！一般人でも稼げるブログ収益化の黄金パターンとは? 100倍稼ぐ人のブログ術 ライティング編 100倍稼ぐ人のブログ術 商品選び＆キーワード選定編" data-ku="yes" data-kind="kdp" data-new="1" aria-labelledby="person-39">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-39">タケウチ</h2>
+  <p class="publication">タケウチ@1記事635万円</p>
+  <p class="author-name"><span>Kindle著者名</span>竹内洋平</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">100倍稼ぐ人のブログ術: 1記事で635万円稼いだ アフィリエイト戦略を伝授！アクセス不要！文章力不要！一般人でも稼げるブログ収益化の黄金パターンとは?</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0CLNK1PNR" target="_blank" rel="noopener noreferrer" aria-label="100倍稼ぐ人のブログ術: 1記事で635万円稼いだ アフィリエイト戦略を伝授！アクセス不要！文章力不要！一般人でも稼げるブログ収益化の黄金パターンとは?をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div><div class="book"><p class="book-title">100倍稼ぐ人のブログ術 ライティング編</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0CVQ4TYTJ" target="_blank" rel="noopener noreferrer" aria-label="100倍稼ぐ人のブログ術 ライティング編をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div><div class="book"><p class="book-title">100倍稼ぐ人のブログ術 商品選び＆キーワード選定編</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0D7V85WFT" target="_blank" rel="noopener noreferrer" aria-label="100倍稼ぐ人のブログ術 商品選び＆キーワード選定編をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://takeuchi55.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="タケウチのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="たてばやし淳｜『生成AI最速仕事術』9万部" data-publication="人生を自動化する『AIライフハック』通信" data-author="たてばやし淳" data-books="生成AI最速仕事術" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-40">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-40">たてばやし淳｜『生成AI最速仕事術』9万部</h2>
+  <p class="publication">人生を自動化する『AIライフハック』通信</p>
+  <p class="author-name"><span>Kindle著者名</span>たてばやし淳</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">生成AI最速仕事術</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0F8MZQGSF" target="_blank" rel="noopener noreferrer" aria-label="生成AI最速仕事術をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://substack.com/@excelniisan" target="_blank" rel="noopener noreferrer" aria-label="たてばやし淳｜『生成AI最速仕事術』9万部のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="たろちん｜語り人" data-publication="たろちん|語り人" data-author="たろちん" data-books="祈りのライン: 祈りから琉球王国を読み解く (RYUKYU STYLE BOOKS)" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-41">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-41">たろちん｜語り人</h2>
+  <p class="publication">たろちん|語り人</p>
+  <p class="author-name"><span>Kindle著者名</span>たろちん</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">祈りのライン: 祈りから琉球王国を読み解く (RYUKYU STYLE BOOKS)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H7PTJJLJ" target="_blank" rel="noopener noreferrer" aria-label="祈りのライン: 祈りから琉球王国を読み解く (RYUKYU STYLE BOOKS)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://tarochin098.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="たろちん｜語り人のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ちなみ🐥｜書を綴る道。" data-publication="ちなみ｜書を綴る道" data-author="ちなみ" data-books="花想: 花言葉から生まれた、十二の想い" data-ku="unknown" data-kind="kdp" data-new="0" aria-labelledby="person-42">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-42">ちなみ🐥｜書を綴る道。</h2>
+  <p class="publication">ちなみ｜書を綴る道</p>
+  <p class="author-name"><span>Kindle著者名</span>ちなみ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">花想: 花言葉から生まれた、十二の想い</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H96GJD1B" target="_blank" rel="noopener noreferrer" aria-label="花想: 花言葉から生まれた、十二の想いをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://chinamimoon.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ちなみ🐥｜書を綴る道。のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ながのゆうほ" data-publication="ながのゆうほ＊再現性×時短の鬼" data-author="ながの ゆうほ" data-books="今日からおうちでパティシエ かんたん！５分でわかるプロ級おやつレシピ: パティシエール今日のおやつ 1日48時間あったら何をする？女性起業家が忙しさから解放される時間管理＆売上UPメソッド: ひとりビジネスで年商8桁！パティシエ思考時間術" data-ku="yes" data-kind="kdp" data-new="1" aria-labelledby="person-43">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-43">ながのゆうほ</h2>
+  <p class="publication">ながのゆうほ＊再現性×時短の鬼</p>
+  <p class="author-name"><span>Kindle著者名</span>ながの ゆうほ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">今日からおうちでパティシエ かんたん！５分でわかるプロ級おやつレシピ: パティシエール今日のおやつ</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B09C2LMFP4" target="_blank" rel="noopener noreferrer" aria-label="今日からおうちでパティシエ かんたん！５分でわかるプロ級おやつレシピ: パティシエール今日のおやつをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div><div class="book"><p class="book-title">1日48時間あったら何をする？女性起業家が忙しさから解放される時間管理＆売上UPメソッド: ひとりビジネスで年商8桁！パティシエ思考時間術</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0F22KN81C" target="_blank" rel="noopener noreferrer" aria-label="1日48時間あったら何をする？女性起業家が忙しさから解放される時間管理＆売上UPメソッド: ひとりビジネスで年商8桁！パティシエ思考時間術をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://ptdessert.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ながのゆうほのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ばっちょ🖋️74冊目執筆中" data-publication="バッチョ・トゥ・ザ・フューチャー" data-author="石橋昭典" data-books="母子手帳を手に入れて僕は父親になる: 妊娠から出産までの十月十日の記録・父親になるって何だろう？父親になった実感ていつ？父親っていったいどうしたら？" data-ku="past" data-kind="kdp" data-new="1" aria-labelledby="person-44">
+  <div class="card-meta"><span class="ku-badge ku-past">過去にKU確認</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-44">ばっちょ🖋️74冊目執筆中</h2>
+  <p class="publication">バッチョ・トゥ・ザ・フューチャー</p>
+  <p class="author-name"><span>Kindle著者名</span>石橋昭典</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">母子手帳を手に入れて僕は父親になる: 妊娠から出産までの十月十日の記録・父親になるって何だろう？父親になった実感ていつ？父親っていったいどうしたら？</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0CW1MK6RV" target="_blank" rel="noopener noreferrer" aria-label="母子手帳を手に入れて僕は父親になる: 妊娠から出産までの十月十日の記録・父親になるって何だろう？父親になった実感ていつ？父親っていったいどうしたら？をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://baccho.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ばっちょ🖋️74冊目執筆中のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ばつ森" data-publication="ばつ森のXXなニュース" data-author="ばつ森" data-books="悪役令息の僕とツレない従者の、愛しい世界の歩き方" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-45">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-45">ばつ森</h2>
+  <p class="publication">ばつ森のXXなニュース</p>
+  <p class="author-name"><span>Kindle著者名</span>ばつ森</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">悪役令息の僕とツレない従者の、愛しい世界の歩き方</p><a class="amazon-link" href="https://www.amazon.co.jp/s?i=digital-text&amp;k=%E3%81%B0%E3%81%A4%E6%A3%AE%20%E6%82%AA%E5%BD%B9%E4%BB%A4%E6%81%AF%E3%81%AE%E5%83%95%E3%81%A8%E3%83%84%E3%83%AC%E3%81%AA%E3%81%84%E5%BE%93%E8%80%85%E3%81%AE%E3%80%81%E6%84%9B%E3%81%97%E3%81%84%E4%B8%96%E7%95%8C%E3%81%AE%E6%AD%A9%E3%81%8D%E6%96%B9" target="_blank" rel="noopener noreferrer" aria-label="悪役令息の僕とツレない従者の、愛しい世界の歩き方をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://xmori.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ばつ森のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ハマー | 週末30分AI投資サポーター" data-publication="週末30分AI投資ログ" data-author="hammer" data-books="【2025-2026年版】最高の優待！子育て夫婦のための最強優待企業30選" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-46">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-46">ハマー | 週末30分AI投資サポーター</h2>
+  <p class="publication">週末30分AI投資ログ</p>
+  <p class="author-name"><span>Kindle著者名</span>hammer</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">【2025-2026年版】最高の優待！子育て夫婦のための最強優待企業30選</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0G49MWQRM" target="_blank" rel="noopener noreferrer" aria-label="【2025-2026年版】最高の優待！子育て夫婦のための最強優待企業30選をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://growthstockman.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ハマー | 週末30分AI投資サポーターのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ハラペー" data-publication="ハラペーのニュースレター" data-author="ハラペー" data-books="新NISAの投資術: 初心者でも資産を育てる方法31選" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-47">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-47">ハラペー</h2>
+  <p class="publication">ハラペーのニュースレター</p>
+  <p class="author-name"><span>Kindle著者名</span>ハラペー</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">新NISAの投資術: 初心者でも資産を育てる方法31選</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H2FL99X2" target="_blank" rel="noopener noreferrer" aria-label="新NISAの投資術: 初心者でも資産を育てる方法31選をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://harapei.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ハラペーのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="はるな👠iPad Worker" data-publication="iPad Workers" data-author="五藤晴菜" data-books="図と線で考える技術" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-48">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-48">はるな👠iPad Worker</h2>
+  <p class="publication">iPad Workers</p>
+  <p class="author-name"><span>Kindle著者名</span>五藤晴菜</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">図と線で考える技術</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0G4M7QCSX" target="_blank" rel="noopener noreferrer" aria-label="図と線で考える技術をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://ipadworkers.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="はるな👠iPad WorkerのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ひろみ👾海辺の発酵研究者" data-publication="海辺の小さな研究室" data-author="いそがいひろみ" data-books="気圧の変化で動けなかった私を変えた、1日1杯の発酵スープ ― 気圧に負けない自律神経を育てる、食と暮らしの整え方 ―" data-ku="yes" data-kind="kdp" data-new="1" aria-labelledby="person-49">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-49">ひろみ👾海辺の発酵研究者</h2>
+  <p class="publication">海辺の小さな研究室</p>
+  <p class="author-name"><span>Kindle著者名</span>いそがいひろみ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">気圧の変化で動けなかった私を変えた、1日1杯の発酵スープ ― 気圧に負けない自律神経を育てる、食と暮らしの整え方 ―</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FP141H46" target="_blank" rel="noopener noreferrer" aria-label="気圧の変化で動けなかった私を変えた、1日1杯の発酵スープ ― 気圧に負けない自律神経を育てる、食と暮らしの整え方 ―をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://hakkology.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ひろみ👾海辺の発酵研究者のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ふーちゃん" data-publication="ふーちゃん｜限界集落を味わう暮らし" data-author="ふーちゃん（共著：藤田枝里香）" data-books="失敗しない！1年で地方移住田舎暮らしする方法" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-50">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-50">ふーちゃん</h2>
+  <p class="publication">ふーちゃん｜限界集落を味わう暮らし</p>
+  <p class="author-name"><span>Kindle著者名</span>ふーちゃん（共著：藤田枝里香）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">失敗しない！1年で地方移住田舎暮らしする方法</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B09T3C6SKF" target="_blank" rel="noopener noreferrer" aria-label="失敗しない！1年で地方移住田舎暮らしする方法をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://murozumitk.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ふーちゃんのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="プロ奢ラレヤー" data-publication="奢られ屋の人間関係論" data-author="プロ奢ラレヤー" data-books="嫌なこと、全部やめても生きられる" data-ku="past" data-kind="commercial" data-new="1" aria-labelledby="person-51">
+  <div class="card-meta"><span class="ku-badge ku-past">過去にKU確認</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-51">プロ奢ラレヤー</h2>
+  <p class="publication">奢られ屋の人間関係論</p>
+  <p class="author-name"><span>Kindle著者名</span>プロ奢ラレヤー</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">嫌なこと、全部やめても生きられる</p><a class="amazon-link" href="https://amzn.to/2u6vCg5" target="_blank" rel="noopener noreferrer" aria-label="嫌なこと、全部やめても生きられるをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://proogo.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="プロ奢ラレヤーのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="まあちゅう｜サブスタ初心者読者に寄り添う案内人" data-publication="まあちゅう｜サブスタ初心者読者に寄り添う案内人" data-author="まあちゅう" data-books="発信しなくていいSubstackの教科書" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-52">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-52">まあちゅう｜サブスタ初心者読者に寄り添う案内人</h2>
+  <p class="publication">まあちゅう｜サブスタ初心者読者に寄り添う案内人</p>
+  <p class="author-name"><span>Kindle著者名</span>まあちゅう</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">発信しなくていいSubstackの教科書</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H2Y85CV9" target="_blank" rel="noopener noreferrer" aria-label="発信しなくていいSubstackの教科書をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://substaguide.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="まあちゅう｜サブスタ初心者読者に寄り添う案内人のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="まい｜「好き」を育てるアトリエ🎨" data-publication="まい | 絵本のあるアトリエ🎨" data-author="まい" data-books="わたしって、何が好きだったっけ？: 役割の中で見えなくなった自分と、暮らしの中でもう一度出会う本 かくれてるつもり！しろにゃん" data-ku="yes" data-kind="kdp" data-new="1" aria-labelledby="person-53">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-53">まい｜「好き」を育てるアトリエ🎨</h2>
+  <p class="publication">まい | 絵本のあるアトリエ🎨</p>
+  <p class="author-name"><span>Kindle著者名</span>まい</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">わたしって、何が好きだったっけ？: 役割の中で見えなくなった自分と、暮らしの中でもう一度出会う本</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0HDYCBKC3" target="_blank" rel="noopener noreferrer" aria-label="わたしって、何が好きだったっけ？: 役割の中で見えなくなった自分と、暮らしの中でもう一度出会う本をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div><div class="book"><p class="book-title">かくれてるつもり！しろにゃん</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GQLZVVRR" target="_blank" rel="noopener noreferrer" aria-label="かくれてるつもり！しろにゃんをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://maiipstudio.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="まい｜「好き」を育てるアトリエ🎨のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="まさひろ | サブスタックの先生" data-publication="note × Substack研究室" data-author="みうら まさひろ" data-books="noteの次はSubstack: あなたの努力が実る場所は必ずある" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-54">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-54">まさひろ | サブスタックの先生</h2>
+  <p class="publication">note × Substack研究室</p>
+  <p class="author-name"><span>Kindle著者名</span>みうら まさひろ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">noteの次はSubstack: あなたの努力が実る場所は必ずある</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0HDLZ7MS2" target="_blank" rel="noopener noreferrer" aria-label="noteの次はSubstack: あなたの努力が実る場所は必ずあるをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://masahironote.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="まさひろ | サブスタックの先生のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="マツダミヒロ@著書累計50万部" data-publication="マツダミヒロの余白通信" data-author="マツダミヒロ" data-books="なんにもしない。 「余白」という最高の習慣" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-55">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-55">マツダミヒロ@著書累計50万部</h2>
+  <p class="publication">マツダミヒロの余白通信</p>
+  <p class="author-name"><span>Kindle著者名</span>マツダミヒロ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">なんにもしない。 「余白」という最高の習慣</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GHZK2JSW" target="_blank" rel="noopener noreferrer" aria-label="なんにもしない。 「余白」という最高の習慣をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://mihiromatsuda.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="マツダミヒロ@著書累計50万部のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="マナミ" data-publication="マナミのLINEスタンプ × AI 実験室" data-author="マナミ" data-books="私が家事をやめたら、家がよく回るようになりました" data-ku="unknown" data-kind="kdp" data-new="1" aria-labelledby="person-56">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-56">マナミ</h2>
+  <p class="publication">マナミのLINEスタンプ × AI 実験室</p>
+  <p class="author-name"><span>Kindle著者名</span>マナミ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">私が家事をやめたら、家がよく回るようになりました</p><a class="amazon-link" href="https://www.amazon.co.jp/s?k=%E3%83%9E%E3%83%8A%E3%83%9F%20%E7%A7%81%E3%81%8C%E5%AE%B6%E4%BA%8B%E3%82%92%E3%82%84%E3%82%81%E3%81%9F%E3%82%89%E3%80%81%E5%AE%B6%E3%81%8C%E3%82%88%E3%81%8F%E5%9B%9E%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F" target="_blank" rel="noopener noreferrer" aria-label="私が家事をやめたら、家がよく回るようになりましたをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://mana2518.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="マナミのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="マネーペニー" data-publication="MoneypennyFile" data-author="アレキサンダー富美" data-books="努力しても収入が増えない理由: AI時代、収入はこうして決まる (アレックスアーム出版)" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-57">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-57">マネーペニー</h2>
+  <p class="publication">MoneypennyFile</p>
+  <p class="author-name"><span>Kindle著者名</span>アレキサンダー富美</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">努力しても収入が増えない理由: AI時代、収入はこうして決まる (アレックスアーム出版)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GX19RGWC" target="_blank" rel="noopener noreferrer" aria-label="努力しても収入が増えない理由: AI時代、収入はこうして決まる (アレックスアーム出版)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://moneypennyfile.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="マネーペニーのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ミニマリストたなか" data-publication="Minimalist Tanaka" data-author="ミニマリストたなか" data-books="手取り15万で豊かに暮らす: ミニマリストがやめた20の無駄遣い ミニマリストたなかの「お金・自由」シリーズ (たなか出版)" data-ku="past" data-kind="kdp" data-new="0" aria-labelledby="person-58">
+  <div class="card-meta"><span class="ku-badge ku-past">過去にKU確認</span></div>
+  <h2 id="person-58">ミニマリストたなか</h2>
+  <p class="publication">Minimalist Tanaka</p>
+  <p class="author-name"><span>Kindle著者名</span>ミニマリストたなか</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">手取り15万で豊かに暮らす: ミニマリストがやめた20の無駄遣い ミニマリストたなかの「お金・自由」シリーズ (たなか出版)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FQNHWS8R" target="_blank" rel="noopener noreferrer" aria-label="手取り15万で豊かに暮らす: ミニマリストがやめた20の無駄遣い ミニマリストたなかの「お金・自由」シリーズ (たなか出版)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://minimalisttanaka.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ミニマリストたなかのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="めざすちゃん" data-publication="めざすちゃん│がんばれない凡人の低コスト生存戦略" data-author="FIREめざすチャン" data-books="働きたくない凡人の人生戦略: 人生逆転！会社をやめたい低収入OLが30代で5,000万円貯蓄して働かずに生きれるようになる資産形成術" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-59">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-59">めざすちゃん</h2>
+  <p class="publication">めざすちゃん│がんばれない凡人の低コスト生存戦略</p>
+  <p class="author-name"><span>Kindle著者名</span>FIREめざすチャン</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">働きたくない凡人の人生戦略: 人生逆転！会社をやめたい低収入OLが30代で5,000万円貯蓄して働かずに生きれるようになる資産形成術</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FRMCTQ3B" target="_blank" rel="noopener noreferrer" aria-label="働きたくない凡人の人生戦略: 人生逆転！会社をやめたい低収入OLが30代で5,000万円貯蓄して働かずに生きれるようになる資産形成術をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://mezasuchan.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="めざすちゃんのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="もっちゃ｜50代再起動×キャリア実験" data-publication="もっちゃ｜50代からの挑戦" data-author="もっちゃ" data-books="60歳の自分を、想像できますか？: モヤモヤを抱えた50代女性の、早期退職と人生再設計の記録" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-60">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-60">もっちゃ｜50代再起動×キャリア実験</h2>
+  <p class="publication">もっちゃ｜50代からの挑戦</p>
+  <p class="author-name"><span>Kindle著者名</span>もっちゃ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">60歳の自分を、想像できますか？: モヤモヤを抱えた50代女性の、早期退職と人生再設計の記録</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H57KDN9B" target="_blank" rel="noopener noreferrer" aria-label="60歳の自分を、想像できますか？: モヤモヤを抱えた50代女性の、早期退職と人生再設計の記録をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://moccha23.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="もっちゃ｜50代再起動×キャリア実験のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ヤドリ" data-publication="朝活・習慣化の極意" data-author="ヤドリ" data-books="三日坊主さんの朝活: 意志に頼らず続ける、書く習慣のつくり方" data-ku="yes" data-kind="kdp" data-new="1" aria-labelledby="person-61">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-61">ヤドリ</h2>
+  <p class="publication">朝活・習慣化の極意</p>
+  <p class="author-name"><span>Kindle著者名</span>ヤドリ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">三日坊主さんの朝活: 意志に頼らず続ける、書く習慣のつくり方</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0HD5XK6PY" target="_blank" rel="noopener noreferrer" aria-label="三日坊主さんの朝活: 意志に頼らず続ける、書く習慣のつくり方をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://yadori.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ヤドリのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="やまがた てるえ/助産師•作家/女性の心と体のケア" data-publication="やまがた てるえ/助産師•作家/女性の心と体のケア" data-author="やまがたてるえ" data-books="15歳までの女の子に伝えたい自分の体と心の守り方" data-ku="yes" data-kind="commercial" data-new="0" aria-labelledby="person-62">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-62">やまがた てるえ/助産師•作家/女性の心と体のケア</h2>
+  <p class="publication">やまがた てるえ/助産師•作家/女性の心と体のケア</p>
+  <p class="author-name"><span>Kindle著者名</span>やまがたてるえ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">15歳までの女の子に伝えたい自分の体と心の守り方</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B01G4QUR4C" target="_blank" rel="noopener noreferrer" aria-label="15歳までの女の子に伝えたい自分の体と心の守り方をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://hahanoki.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="やまがた てるえ/助産師•作家/女性の心と体のケアのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="やまたつ／カナダ人ニュース" data-publication="カナダ人ニュース" data-author="やまたつ" data-books="イーロン・マスクの野望" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-63">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-63">やまたつ／カナダ人ニュース</h2>
+  <p class="publication">カナダ人ニュース</p>
+  <p class="author-name"><span>Kindle著者名</span>やまたつ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">イーロン・マスクの野望</p><a class="amazon-link" href="https://www.amazon.co.jp/s?k=%E3%82%84%E3%81%BE%E3%81%9F%E3%81%A4%20%E3%82%A4%E3%83%BC%E3%83%AD%E3%83%B3%E3%83%BB%E3%83%9E%E3%82%B9%E3%82%AF%E3%81%AE%E9%87%8E%E6%9C%9B%20Kindle" target="_blank" rel="noopener noreferrer" aria-label="イーロン・マスクの野望をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://canadiannews.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="やまたつ／カナダ人ニュースのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ゆでたま" data-publication="ゆでたま｜子どもとの今を綴る人" data-author="ゆでたま" data-books="それでもうちの子なら大丈夫: スマホ ウソ 盗み お金 不登校…「わかる」「あるある」 きっとうなずきホッとする 幼小中３人の現役ママが描くノンフィクション子育て物語 (ゆでたまBooks)" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-64">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-64">ゆでたま</h2>
+  <p class="publication">ゆでたま｜子どもとの今を綴る人</p>
+  <p class="author-name"><span>Kindle著者名</span>ゆでたま</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">それでもうちの子なら大丈夫: スマホ ウソ 盗み お金 不登校…「わかる」「あるある」 きっとうなずきホッとする 幼小中３人の現役ママが描くノンフィクション子育て物語 (ゆでたまBooks)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H9486RVP" target="_blank" rel="noopener noreferrer" aria-label="それでもうちの子なら大丈夫: スマホ ウソ 盗み お金 不登校…「わかる」「あるある」 きっとうなずきホッとする 幼小中３人の現役ママが描くノンフィクション子育て物語 (ゆでたまBooks)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://yudetama.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ゆでたまのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ゆりか｜50代からの発信伴走者" data-publication="ゆりか｜50代人生再起サポーター" data-author="ゆりか" data-books="誰からも好かれる感じがいい人の伝え方" data-ku="yes" data-kind="commercial" data-new="0" aria-labelledby="person-65">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-65">ゆりか｜50代からの発信伴走者</h2>
+  <p class="publication">ゆりか｜50代人生再起サポーター</p>
+  <p class="author-name"><span>Kindle著者名</span>ゆりか</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">誰からも好かれる感じがいい人の伝え方</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0F9B5C4RC" target="_blank" rel="noopener noreferrer" aria-label="誰からも好かれる感じがいい人の伝え方をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://yurika10311.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ゆりか｜50代からの発信伴走者のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="よしだ健康‪｜サブスタッカーPro" data-publication="徒然草4.0" data-author="よしだ健康" data-books="バズらなくても売れる 奇跡のSNS「Substack」" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-66">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-66">よしだ健康‪｜サブスタッカーPro</h2>
+  <p class="publication">徒然草4.0</p>
+  <p class="author-name"><span>Kindle著者名</span>よしだ健康</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">バズらなくても売れる 奇跡のSNS「Substack」</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0HGGBGVWM" target="_blank" rel="noopener noreferrer" aria-label="バズらなくても売れる 奇跡のSNS「Substack」をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://booktokjapan.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="よしだ健康‪｜サブスタッカーProのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="ラッタ@書くカエル" data-publication="ラッタ@書くカエル" data-author="ラッタ" data-books="さよなら、赤信号" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-67">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-67">ラッタ@書くカエル</h2>
+  <p class="publication">ラッタ@書くカエル</p>
+  <p class="author-name"><span>Kindle著者名</span>ラッタ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">さよなら、赤信号</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B09L4CB3QY" target="_blank" rel="noopener noreferrer" aria-label="さよなら、赤信号をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://ratta56.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="ラッタ@書くカエルのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="りっぴー" data-publication="りっぴー｜AI×スピリチュアルの専門家" data-author="りっぴー" data-books="毎日しんどかった私が設定を変えただけで豊かさとご縁が巡り出した話" data-ku="unknown" data-kind="kdp" data-new="1" aria-labelledby="person-68">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-68">りっぴー</h2>
+  <p class="publication">りっぴー｜AI×スピリチュアルの専門家</p>
+  <p class="author-name"><span>Kindle著者名</span>りっぴー</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">毎日しんどかった私が設定を変えただけで豊かさとご縁が巡り出した話</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GX2YLLL3" target="_blank" rel="noopener noreferrer" aria-label="毎日しんどかった私が設定を変えただけで豊かさとご縁が巡り出した話をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://rippi888.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="りっぴーのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="りゅー＠シニアの未来をAIで開く" data-publication="りゅー＠シニアの未来をAIで開く" data-author="Lyustyle" data-books="コンテンツクリエイターの最強メディアSubstack完全攻略 : フォロワー数にさようなら！SNSとメルマガでビジネスを作る最強のハイブリッド戦略 シニアアップデート (ミライ企画PlanNova)" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-69">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-69">りゅー＠シニアの未来をAIで開く</h2>
+  <p class="publication">りゅー＠シニアの未来をAIで開く</p>
+  <p class="author-name"><span>Kindle著者名</span>Lyustyle</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">コンテンツクリエイターの最強メディアSubstack完全攻略 : フォロワー数にさようなら！SNSとメルマガでビジネスを作る最強のハイブリッド戦略 シニアアップデート (ミライ企画PlanNova)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GY82QLM6" target="_blank" rel="noopener noreferrer" aria-label="コンテンツクリエイターの最強メディアSubstack完全攻略 : フォロワー数にさようなら！SNSとメルマガでビジネスを作る最強のハイブリッド戦略 シニアアップデート (ミライ企画PlanNova)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://substack.com/@lyuj" target="_blank" rel="noopener noreferrer" aria-label="りゅー＠シニアの未来をAIで開くのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="りりな" data-publication="りりな￤主婦の投資コラム" data-author="りりな" data-books="改訂版 はじめ時はいつも今 主婦にやさしいお金の増やし方BOOK" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-70">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-70">りりな</h2>
+  <p class="publication">りりな￤主婦の投資コラム</p>
+  <p class="author-name"><span>Kindle著者名</span>りりな</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">改訂版 はじめ時はいつも今 主婦にやさしいお金の増やし方BOOK</p><a class="amazon-link" href="https://www.amazon.co.jp/s?i=digital-text&amp;k=%E3%82%8A%E3%82%8A%E3%81%AA%20%E6%94%B9%E8%A8%82%E7%89%88%20%E3%81%AF%E3%81%98%E3%82%81%E6%99%82%E3%81%AF%E3%81%84%E3%81%A4%E3%82%82%E4%BB%8A%20%E4%B8%BB%E5%A9%A6%E3%81%AB%E3%82%84%E3%81%95%E3%81%97%E3%81%84%E3%81%8A%E9%87%91%E3%81%AE%E5%A2%97%E3%82%84%E3%81%97%E6%96%B9BOOK" target="_blank" rel="noopener noreferrer" aria-label="改訂版 はじめ時はいつも今 主婦にやさしいお金の増やし方BOOKをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://kakemane.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="りりなのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="リンダマン" data-publication="リンダマン" data-author="林田真一（共著：田辺洋平）" data-books="自由人3.0" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-71">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-71">リンダマン</h2>
+  <p class="publication">リンダマン</p>
+  <p class="author-name"><span>Kindle著者名</span>林田真一（共著：田辺洋平）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">自由人3.0</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B014USASYU" target="_blank" rel="noopener noreferrer" aria-label="自由人3.0をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://lindaman37.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="リンダマンのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="るる子" data-publication="るる子" data-author="るる子" data-books="ハッピーエンドのその先を" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-72">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-72">るる子</h2>
+  <p class="publication">るる子</p>
+  <p class="author-name"><span>Kindle著者名</span>るる子</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ハッピーエンドのその先を</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0CVLGTZFH" target="_blank" rel="noopener noreferrer" aria-label="ハッピーエンドのその先ををAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://ruru2222.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="るる子のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="わくわく☁️　わたし、かわいいよね！" data-publication="わくわくのかわいいやつ" data-author="わくわく" data-books="考えてたらこうなった。" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-73">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-73">わくわく☁️　わたし、かわいいよね！</h2>
+  <p class="publication">わくわくのかわいいやつ</p>
+  <p class="author-name"><span>Kindle著者名</span>わくわく</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">考えてたらこうなった。</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H8PH69P4" target="_blank" rel="noopener noreferrer" aria-label="考えてたらこうなった。をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://wqw9.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="わくわく☁️　わたし、かわいいよね！のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="奥田裕之|深世界" data-publication="奥田裕之|深世界" data-author="奥田裕之" data-books="CHICKEN ESCAPE 臆病者からの脱出: AI時代、人は完成品ではなく「工程」で成長する。 (ソーシャル出版)" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-74">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-74">奥田裕之|深世界</h2>
+  <p class="publication">奥田裕之|深世界</p>
+  <p class="author-name"><span>Kindle著者名</span>奥田裕之</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">CHICKEN ESCAPE 臆病者からの脱出: AI時代、人は完成品ではなく「工程」で成長する。 (ソーシャル出版)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0HB4P2MZ2" target="_blank" rel="noopener noreferrer" aria-label="CHICKEN ESCAPE 臆病者からの脱出: AI時代、人は完成品ではなく「工程」で成長する。 (ソーシャル出版)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://hiroyukiokuda.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="奥田裕之|深世界のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="横山直宏@波動経営で累計100億・8社経営" data-publication="横山直宏@波動経営" data-author="横山直宏" data-books="1つの習慣 うまくいく人は、なぜ「これ」を大切にするのか" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-75">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-75">横山直宏@波動経営で累計100億・8社経営</h2>
+  <p class="publication">横山直宏@波動経営</p>
+  <p class="author-name"><span>Kindle著者名</span>横山直宏</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">1つの習慣 うまくいく人は、なぜ「これ」を大切にするのか</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0F89SSZBG" target="_blank" rel="noopener noreferrer" aria-label="1つの習慣 うまくいく人は、なぜ「これ」を大切にするのかをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://naohiro518.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="横山直宏@波動経営で累計100億・8社経営のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="荻野浩一朗" data-publication="ClaudeCode×Kindle出版・集客" data-author="荻野浩一朗" data-books="専門家AI×Kindle出版術" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-76">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-76">荻野浩一朗</h2>
+  <p class="publication">ClaudeCode×Kindle出版・集客</p>
+  <p class="author-name"><span>Kindle著者名</span>荻野浩一朗</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">専門家AI×Kindle出版術</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GR9QBWBK" target="_blank" rel="noopener noreferrer" aria-label="専門家AI×Kindle出版術をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://ogino.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="荻野浩一朗のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="加藤浩晃" data-publication="加藤浩晃のヘルスケアイノベーション通信" data-author="加藤浩晃" data-books="休養ベスト100 科学的根拠に基づく戦略的に休むスキル" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-77">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-77">加藤浩晃</h2>
+  <p class="publication">加藤浩晃のヘルスケアイノベーション通信</p>
+  <p class="author-name"><span>Kindle著者名</span>加藤浩晃</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">休養ベスト100 科学的根拠に基づく戦略的に休むスキル</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FCM272FZ" target="_blank" rel="noopener noreferrer" aria-label="休養ベスト100 科学的根拠に基づく戦略的に休むスキルをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://hiroakikato.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="加藤浩晃のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="花凛" data-publication="花凛 | 声と言葉で人生を動かす人" data-author="五十嵐花凛" data-books="stand.fm副業の教科書 音声配信で月10万円稼ぐ" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-78">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-78">花凛</h2>
+  <p class="publication">花凛 | 声と言葉で人生を動かす人</p>
+  <p class="author-name"><span>Kindle著者名</span>五十嵐花凛</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">stand.fm副業の教科書 音声配信で月10万円稼ぐ</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GX2ZTS3T" target="_blank" rel="noopener noreferrer" aria-label="stand.fm副業の教科書 音声配信で月10万円稼ぐをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://kariniga.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="花凛のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="近藤銀河" data-publication="近藤銀河のネット" data-author="近藤銀河" data-books="フェミニスト、ゲームやってる" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-79">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-79">近藤銀河</h2>
+  <p class="publication">近藤銀河のネット</p>
+  <p class="author-name"><span>Kindle著者名</span>近藤銀河</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">フェミニスト、ゲームやってる</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0D49F9BDZ" target="_blank" rel="noopener noreferrer" aria-label="フェミニスト、ゲームやってるをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://kondoginga.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="近藤銀河のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="結城浩" data-publication="結城浩ニュースレター" data-author="結城浩" data-books="数学ガールの秘密ノート／式とグラフ" data-ku="yes" data-kind="commercial" data-new="0" aria-labelledby="person-80">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-80">結城浩</h2>
+  <p class="publication">結城浩ニュースレター</p>
+  <p class="author-name"><span>Kindle著者名</span>結城浩</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">数学ガールの秘密ノート／式とグラフ</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B00L0PDMIQ" target="_blank" rel="noopener noreferrer" aria-label="数学ガールの秘密ノート／式とグラフをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://hyukinewsletter.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="結城浩のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="孤伏澤つたゐ" data-publication="孤伏澤つたゐ’s Substack" data-author="孤伏澤つたゐ" data-books="浜辺の村でだれかと暮らせば (ヨミノアシロ文庫)" data-ku="unknown" data-kind="other" data-new="0" aria-labelledby="person-81">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-81">孤伏澤つたゐ</h2>
+  <p class="publication">孤伏澤つたゐ’s Substack</p>
+  <p class="author-name"><span>Kindle著者名</span>孤伏澤つたゐ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">浜辺の村でだれかと暮らせば (ヨミノアシロ文庫)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B09ZPJ4SPW" target="_blank" rel="noopener noreferrer" aria-label="浜辺の村でだれかと暮らせば (ヨミノアシロ文庫)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">その他の出版形態</span><a class="substack-link" href="https://tutaikobushisawa.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="孤伏澤つたゐのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="戸田充広" data-publication="戸田充広　趣味起業" data-author="戸田充広" data-books="さぼてんねこのさぼにゃん こころのアカをおとす本――それを決めているのは自分ってこと" data-ku="yes" data-kind="commercial" data-new="0" aria-labelledby="person-82">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-82">戸田充広</h2>
+  <p class="publication">戸田充広　趣味起業</p>
+  <p class="author-name"><span>Kindle著者名</span>戸田充広</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">さぼてんねこのさぼにゃん こころのアカをおとす本――それを決めているのは自分ってこと</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0759J93C7" target="_blank" rel="noopener noreferrer" aria-label="さぼてんねこのさぼにゃん こころのアカをおとす本――それを決めているのは自分ってことをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://shumikigyo.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="戸田充広のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="広瀬隆雄" data-publication="最期の10年" data-author="広瀬隆雄" data-books="MarketHack流 世界一わかりやすい米国式投資の技法" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-83">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-83">広瀬隆雄</h2>
+  <p class="publication">最期の10年</p>
+  <p class="author-name"><span>Kindle著者名</span>広瀬隆雄</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">MarketHack流 世界一わかりやすい米国式投資の技法</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B00H6XYC4O" target="_blank" rel="noopener noreferrer" aria-label="MarketHack流 世界一わかりやすい米国式投資の技法をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://hirosetakao26.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="広瀬隆雄のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="荒屋明神" data-publication="荒屋明神　ゆるっと集客アドバイザー" data-author="荒屋明神（共著：YUCA）" data-books="偏差値35だった僕が、なぜかすごい人扱いされるようになった件" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-84">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-84">荒屋明神</h2>
+  <p class="publication">荒屋明神　ゆるっと集客アドバイザー</p>
+  <p class="author-name"><span>Kindle著者名</span>荒屋明神（共著：YUCA）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">偏差値35だった僕が、なぜかすごい人扱いされるようになった件</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0G6JY5CLZ" target="_blank" rel="noopener noreferrer" aria-label="偏差値35だった僕が、なぜかすごい人扱いされるようになった件をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://arayamyouzin.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="荒屋明神のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="高口康太" data-publication="高口康太（Kota Takaguchi)" data-author="高口康太（共著：梶谷懐）" data-books="ピークアウトする中国　「殺到する経済」と「合理的バブル」の限界 (文春新書)" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-85">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-85">高口康太</h2>
+  <p class="publication">高口康太（Kota Takaguchi)</p>
+  <p class="author-name"><span>Kindle著者名</span>高口康太（共著：梶谷懐）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ピークアウトする中国　「殺到する経済」と「合理的バブル」の限界 (文春新書)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DSZN8MZ2" target="_blank" rel="noopener noreferrer" aria-label="ピークアウトする中国　「殺到する経済」と「合理的バブル」の限界 (文春新書)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://kotatakaguchi.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="高口康太のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="今井孝" data-publication="今井孝（Substack）" data-author="今井孝" data-books="小さな「GIVE」 シンプルで楽しいのに驚くほど人生が変わる習慣" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-86">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-86">今井孝</h2>
+  <p class="publication">今井孝（Substack）</p>
+  <p class="author-name"><span>Kindle著者名</span>今井孝</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">小さな「GIVE」 シンプルで楽しいのに驚くほど人生が変わる習慣</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GX2X9RPM" target="_blank" rel="noopener noreferrer" aria-label="小さな「GIVE」 シンプルで楽しいのに驚くほど人生が変わる習慣をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://imaitks.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="今井孝のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="紺野大地 / Daicho Konno" data-publication="紺野大地 / Daicho Konno" data-author="紺野大地・池谷裕二" data-books="脳と人工知能をつないだら、人間の能力はどこまで拡張できるのか 脳AI融合の最前線" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-87">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-87">紺野大地 / Daicho Konno</h2>
+  <p class="publication">紺野大地 / Daicho Konno</p>
+  <p class="author-name"><span>Kindle著者名</span>紺野大地・池谷裕二</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">脳と人工知能をつないだら、人間の能力はどこまで拡張できるのか 脳AI融合の最前線</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B09MTFJYDC" target="_blank" rel="noopener noreferrer" aria-label="脳と人工知能をつないだら、人間の能力はどこまで拡張できるのか 脳AI融合の最前線をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://dkonno.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="紺野大地 / Daicho KonnoのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="佐々木正悟" data-publication="佐々木正悟" data-author="佐々木正悟" data-books="人生が変わる自分時間の使い方" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-88">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-88">佐々木正悟</h2>
+  <p class="publication">佐々木正悟</p>
+  <p class="author-name"><span>Kindle著者名</span>佐々木正悟</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">人生が変わる自分時間の使い方</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DRZYPK7X" target="_blank" rel="noopener noreferrer" aria-label="人生が変わる自分時間の使い方をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://nokiba.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="佐々木正悟のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="佐久間裕美子" data-publication="こんにちは未来" data-author="佐久間裕美子" data-books="今日もよく生きた～ニューヨーク流、自分の愛で方～" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-89">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-89">佐久間裕美子</h2>
+  <p class="publication">こんにちは未来</p>
+  <p class="author-name"><span>Kindle著者名</span>佐久間裕美子</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">今日もよく生きた～ニューヨーク流、自分の愛で方～</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FCRP85NB" target="_blank" rel="noopener noreferrer" aria-label="今日もよく生きた～ニューヨーク流、自分の愛で方～をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://konnichiwamirai.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="佐久間裕美子のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="咲多玻奈｜恋愛ミステリー作家" data-publication="咲多玻奈｜恋愛ミステリー" data-author="咲多玻奈" data-books="みんな秘密を抱えてる　10巻" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-90">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-90">咲多玻奈｜恋愛ミステリー作家</h2>
+  <p class="publication">咲多玻奈｜恋愛ミステリー</p>
+  <p class="author-name"><span>Kindle著者名</span>咲多玻奈</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">みんな秘密を抱えてる　10巻</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0HH97J178" target="_blank" rel="noopener noreferrer" aria-label="みんな秘密を抱えてる　10巻をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://substack.com/@saitahana8888" target="_blank" rel="noopener noreferrer" aria-label="咲多玻奈｜恋愛ミステリー作家のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="秋月みりーほ" data-publication="秋月みりーほ｜書くこと、小さな仕事" data-author="秋月みりーほ" data-books="最新作！映像化ミステリー入門: ネタバレなしレビュー" data-ku="unknown" data-kind="kdp" data-new="1" aria-labelledby="person-91">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-91">秋月みりーほ</h2>
+  <p class="publication">秋月みりーほ｜書くこと、小さな仕事</p>
+  <p class="author-name"><span>Kindle著者名</span>秋月みりーほ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">最新作！映像化ミステリー入門: ネタバレなしレビュー</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H6VP5745" target="_blank" rel="noopener noreferrer" aria-label="最新作！映像化ミステリー入門: ネタバレなしレビューをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://kindlenote.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="秋月みりーほのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="渋谷修太" data-publication="Shuta Shibuya" data-author="渋谷修太" data-books="友達経営　大好きな仲間と会社を創った" data-ku="yes" data-kind="commercial" data-new="0" aria-labelledby="person-92">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-92">渋谷修太</h2>
+  <p class="publication">Shuta Shibuya</p>
+  <p class="author-name"><span>Kindle著者名</span>渋谷修太</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">友達経営　大好きな仲間と会社を創った</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B09STPD7KS" target="_blank" rel="noopener noreferrer" aria-label="友達経営　大好きな仲間と会社を創ったをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://shibushuta.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="渋谷修太のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="小沢未央子@人で選ばれるYouTube発信" data-publication="おざわみおこ@人で選ばれるYouTubeディレクターのガチ本音" data-author="小沢未央子（共著：松村忍）" data-books="ゆびあみでつくる５　かわいい！がいっぱい　１００円ショップではじめての手芸" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-93">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-93">小沢未央子@人で選ばれるYouTube発信</h2>
+  <p class="publication">おざわみおこ@人で選ばれるYouTubeディレクターのガチ本音</p>
+  <p class="author-name"><span>Kindle著者名</span>小沢未央子（共著：松村忍）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ゆびあみでつくる５　かわいい！がいっぱい　１００円ショップではじめての手芸</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0F9Y5MP7T" target="_blank" rel="noopener noreferrer" aria-label="ゆびあみでつくる５　かわいい！がいっぱい　１００円ショップではじめての手芸をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://miokoguma.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="小沢未央子@人で選ばれるYouTube発信のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="小田やかた ✍️ Obsidianで書くKindle作家" data-publication="小田やかたの知的生産ノート" data-author="小田やかた" data-books="整理しないノート術　〜検索とリンクで情報がつながり、思考が動き出す〜 メモ・ノート術" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-94">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-94">小田やかた ✍️ Obsidianで書くKindle作家</h2>
+  <p class="publication">小田やかたの知的生産ノート</p>
+  <p class="author-name"><span>Kindle著者名</span>小田やかた</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">整理しないノート術　〜検索とリンクで情報がつながり、思考が動き出す〜 メモ・ノート術</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FFZZXD32" target="_blank" rel="noopener noreferrer" aria-label="整理しないノート術　〜検索とリンクで情報がつながり、思考が動き出す〜 メモ・ノート術をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://yakataoda.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="小田やかた ✍️ Obsidianで書くKindle作家のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="松本健" data-publication="Ken Matsumoto&#39;s POST" data-author="松本健" data-books="Substackで取り戻した いつの間にか、失っていたもの" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-95">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-95">松本健</h2>
+  <p class="publication">Ken Matsumoto&#39;s POST</p>
+  <p class="author-name"><span>Kindle著者名</span>松本健</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">Substackで取り戻した いつの間にか、失っていたもの</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H4CCWTDR" target="_blank" rel="noopener noreferrer" aria-label="Substackで取り戻した いつの間にか、失っていたものをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://kmatsumo.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="松本健のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="成島拓" data-publication="コンテンツビジネスのプロ" data-author="成島拓" data-books="“オンライン完結型副業”で半自動的にサラリーマンの倍以上稼ぐ「情報発信MBA」: 副業で１０年稼ぎ続ける方法" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-96">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-96">成島拓</h2>
+  <p class="publication">コンテンツビジネスのプロ</p>
+  <p class="author-name"><span>Kindle著者名</span>成島拓</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">“オンライン完結型副業”で半自動的にサラリーマンの倍以上稼ぐ「情報発信MBA」: 副業で１０年稼ぎ続ける方法</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B09T91GRX6" target="_blank" rel="noopener noreferrer" aria-label="“オンライン完結型副業”で半自動的にサラリーマンの倍以上稼ぐ「情報発信MBA」: 副業で１０年稼ぎ続ける方法をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://freeowner17.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="成島拓のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="赤塚智高" data-publication="赤塚智高 | トミー" data-author="赤塚智高" data-books="神さまはすぐやる人が大好き。" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-97">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-97">赤塚智高</h2>
+  <p class="publication">赤塚智高 | トミー</p>
+  <p class="author-name"><span>Kindle著者名</span>赤塚智高</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">神さまはすぐやる人が大好き。</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B08XLTPJS5" target="_blank" rel="noopener noreferrer" aria-label="神さまはすぐやる人が大好き。をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://innocentworld910.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="赤塚智高のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="前田徳彦｜星空写真家" data-publication="前田徳彦｜星空写真家" data-author="前田徳彦" data-books="星景写真ガイドブック" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-98">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-98">前田徳彦｜星空写真家</h2>
+  <p class="publication">前田徳彦｜星空写真家</p>
+  <p class="author-name"><span>Kindle著者名</span>前田徳彦</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">星景写真ガイドブック</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DS6LZDL8" target="_blank" rel="noopener noreferrer" aria-label="星景写真ガイドブックをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://starwalker0202.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="前田徳彦｜星空写真家のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="倉下忠憲@rashita2" data-publication="Rashita’s Newsletter" data-author="倉下忠憲" data-books="生成AIとライフハック: 個人的なコンピューティングにむけて" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-99">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-99">倉下忠憲@rashita2</h2>
+  <p class="publication">Rashita’s Newsletter</p>
+  <p class="author-name"><span>Kindle著者名</span>倉下忠憲</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">生成AIとライフハック: 個人的なコンピューティングにむけて</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GKNBZXK8" target="_blank" rel="noopener noreferrer" aria-label="生成AIとライフハック: 個人的なコンピューティングにむけてをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://tadanori.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="倉下忠憲@rashita2のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="太田明日香" data-publication="夜学舎’s Newsletter" data-author="太田明日香" data-books="愛と家事" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-100">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-100">太田明日香</h2>
+  <p class="publication">夜学舎’s Newsletter</p>
+  <p class="author-name"><span>Kindle著者名</span>太田明日香</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">愛と家事</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B079GRP3QS" target="_blank" rel="noopener noreferrer" aria-label="愛と家事をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://yagakusha.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="太田明日香のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="大橋一慶" data-publication="大橋一慶セールスコピーライター" data-author="大橋一慶" data-books="ポチらせる文章術" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-101">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-101">大橋一慶</h2>
+  <p class="publication">大橋一慶セールスコピーライター</p>
+  <p class="author-name"><span>Kindle著者名</span>大橋一慶</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ポチらせる文章術</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B07ZKP1HPD" target="_blank" rel="noopener noreferrer" aria-label="ポチらせる文章術をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://minnanocopy.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="大橋一慶のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="大橋悦夫" data-publication="しごたのじゃーなる" data-author="大橋悦夫（佐々木正悟との共著）" data-books="スマホ時代のタスク管理「超」入門" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-102">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-102">大橋悦夫</h2>
+  <p class="publication">しごたのじゃーなる</p>
+  <p class="author-name"><span>Kindle著者名</span>大橋悦夫（佐々木正悟との共著）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">スマホ時代のタスク管理「超」入門</p><a class="amazon-link" href="https://www.amazon.co.jp/s?i=digital-text&amp;k=%E5%A4%A7%E6%A9%8B%E6%82%A6%E5%A4%AB%20%E4%BD%90%E3%80%85%E6%9C%A8%E6%AD%A3%E6%82%9F%20%E3%82%B9%E3%83%9E%E3%83%9B%E6%99%82%E4%BB%A3%E3%81%AE%E3%82%BF%E3%82%B9%E3%82%AF%E7%AE%A1%E7%90%86%E3%80%8C%E8%B6%85%E3%80%8D%E5%85%A5%E9%96%80" target="_blank" rel="noopener noreferrer" aria-label="スマホ時代のタスク管理「超」入門をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://shigotano.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="大橋悦夫のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="大山 裕介" data-publication="繊細クリエイターの道しるべ『未来のコンパス』" data-author="大山裕介" data-books="AI疲れはGeminiで整える: 説明書を捨てて「ストーリー」で動かす最強のチーム論 (大山ブックス)" data-ku="unknown" data-kind="kdp" data-new="0" aria-labelledby="person-103">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-103">大山 裕介</h2>
+  <p class="publication">繊細クリエイターの道しるべ『未来のコンパス』</p>
+  <p class="author-name"><span>Kindle著者名</span>大山裕介</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">AI疲れはGeminiで整える: 説明書を捨てて「ストーリー」で動かす最強のチーム論 (大山ブックス)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0HBP88Y5S" target="_blank" rel="noopener noreferrer" aria-label="AI疲れはGeminiで整える: 説明書を捨てて「ストーリー」で動かす最強のチーム論 (大山ブックス)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://yusukeoyaman.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="大山 裕介のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="大田勇希｜ハラスメントを哲学する人" data-publication="大田勇希のメール" data-author="チームクレア（酒井康博・大田勇希・小野純）" data-books="リスクを資産に変える 超ハラスメント対策" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-104">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-104">大田勇希｜ハラスメントを哲学する人</h2>
+  <p class="publication">大田勇希のメール</p>
+  <p class="author-name"><span>Kindle著者名</span>チームクレア（酒井康博・大田勇希・小野純）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">リスクを資産に変える 超ハラスメント対策</p><a class="amazon-link" href="https://www.amazon.co.jp/s?k=%E3%83%81%E3%83%BC%E3%83%A0%E3%82%AF%E3%83%AC%E3%82%A2+%E3%83%AA%E3%82%B9%E3%82%AF%E3%82%92%E8%B3%87%E7%94%A3%E3%81%AB%E5%A4%89%E3%81%88%E3%82%8B+%E8%B6%85%E3%83%8F%E3%83%A9%E3%82%B9%E3%83%A1%E3%83%B3%E3%83%88%E5%AF%BE%E7%AD%96&amp;i=digital-text" target="_blank" rel="noopener noreferrer" aria-label="リスクを資産に変える 超ハラスメント対策をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://yuumailsan.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="大田勇希｜ハラスメントを哲学する人のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="竹内裕也" data-publication="竹内裕也@競馬本著者" data-author="竹内裕也" data-books="蘇りの法則 復活の激走馬を見分ける方法" data-ku="unknown" data-kind="kdp" data-new="1" aria-labelledby="person-105">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-105">竹内裕也</h2>
+  <p class="publication">竹内裕也@競馬本著者</p>
+  <p class="author-name"><span>Kindle著者名</span>竹内裕也</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">蘇りの法則 復活の激走馬を見分ける方法</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B00H4TISAO" target="_blank" rel="noopener noreferrer" aria-label="蘇りの法則 復活の激走馬を見分ける方法をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://taketube.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="竹内裕也のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="中島大介" data-publication="中島大介@ウェブ職TV の Substack" data-author="中島大介" data-books="この一冊で全部わかる ChatGPT ＆ Copilotの教科書［改訂第2版］" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-106">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-106">中島大介</h2>
+  <p class="publication">中島大介@ウェブ職TV の Substack</p>
+  <p class="author-name"><span>Kindle著者名</span>中島大介</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">この一冊で全部わかる ChatGPT ＆ Copilotの教科書［改訂第2版］</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GLNW5CSV" target="_blank" rel="noopener noreferrer" aria-label="この一冊で全部わかる ChatGPT ＆ Copilotの教科書［改訂第2版］をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://merilinc.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="中島大介のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="長 英一郎@医療経営ニュース" data-publication="医療経営ニュース" data-author="長 英一郎（共著：三好貴之、小田嶋裕之、KAMEKICHI）" data-books="やさしいリハビリの教科書 なるほど医療介護経営" data-ku="yes" data-kind="other" data-new="0" aria-labelledby="person-107">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-107">長 英一郎@医療経営ニュース</h2>
+  <p class="publication">医療経営ニュース</p>
+  <p class="author-name"><span>Kindle著者名</span>長 英一郎（共著：三好貴之、小田嶋裕之、KAMEKICHI）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">やさしいリハビリの教科書 なるほど医療介護経営</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0912Y8QVK" target="_blank" rel="noopener noreferrer" aria-label="やさしいリハビリの教科書 なるほど医療介護経営をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">その他の出版形態</span><a class="substack-link" href="https://eiichiro49.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="長 英一郎@医療経営ニュースのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="長倉顕太" data-publication="長倉顕太＠会えるベストセラー作家" data-author="長倉顕太" data-books="常識の１ミリ先を考える。" data-ku="yes" data-kind="other" data-new="0" aria-labelledby="person-108">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-108">長倉顕太</h2>
+  <p class="publication">長倉顕太＠会えるベストセラー作家</p>
+  <p class="author-name"><span>Kindle著者名</span>長倉顕太</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">常識の１ミリ先を考える。</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B08N4SZG8X" target="_blank" rel="noopener noreferrer" aria-label="常識の１ミリ先を考える。をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">その他の出版形態</span><a class="substack-link" href="https://kentanagakura.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="長倉顕太のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="鳥井 弘文" data-publication="鳥井弘文のSubstack" data-author="鳥井弘文（共著）" data-books="レールの外ってこんな景色: 若手ブロガーから見える新しい生き方" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-109">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-109">鳥井 弘文</h2>
+  <p class="publication">鳥井弘文のSubstack</p>
+  <p class="author-name"><span>Kindle著者名</span>鳥井弘文（共著）</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">レールの外ってこんな景色: 若手ブロガーから見える新しい生き方</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B00OYSW0JS" target="_blank" rel="noopener noreferrer" aria-label="レールの外ってこんな景色: 若手ブロガーから見える新しい生き方をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://hirofumi21.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="鳥井 弘文のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="堤藤成" data-publication="堤  藤成：AI時代のIKIGAI（パーパス）の紡ぎ方" data-author="堤藤成" data-books="ひとことで整える 自分らしく売上とチーム力を上げる言葉の紡ぎ方" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-110">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-110">堤藤成</h2>
+  <p class="publication">堤  藤成：AI時代のIKIGAI（パーパス）の紡ぎ方</p>
+  <p class="author-name"><span>Kindle著者名</span>堤藤成</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ひとことで整える 自分らしく売上とチーム力を上げる言葉の紡ぎ方</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DQZT3H7V" target="_blank" rel="noopener noreferrer" aria-label="ひとことで整える 自分らしく売上とチーム力を上げる言葉の紡ぎ方をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://tsutsumifuji.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="堤藤成のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="定年後ひとりアワー／ふーた" data-publication="定年後ひとりアワー" data-author="ふーた" data-books="リーリーとお金の未来　: はじめてのクリプト入門 (くらしニュース研究所)" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-111">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-111">定年後ひとりアワー／ふーた</h2>
+  <p class="publication">定年後ひとりアワー</p>
+  <p class="author-name"><span>Kindle著者名</span>ふーた</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">リーリーとお金の未来　: はじめてのクリプト入門 (くらしニュース研究所)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H6Z4TCS5" target="_blank" rel="noopener noreferrer" aria-label="リーリーとお金の未来　: はじめてのクリプト入門 (くらしニュース研究所)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://futa625.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="定年後ひとりアワー／ふーたのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="奈緒" data-publication="奈緒@パソコンが苦手なイラスト好きブロガー" data-author="奈緒" data-books="あなたの思い出詰まったブログや手書きの日記がKindleにコピペ式Kindle作成" data-ku="yes" data-kind="kdp" data-new="1" aria-labelledby="person-112">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-112">奈緒</h2>
+  <p class="publication">奈緒@パソコンが苦手なイラスト好きブロガー</p>
+  <p class="author-name"><span>Kindle著者名</span>奈緒</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">あなたの思い出詰まったブログや手書きの日記がKindleにコピペ式Kindle作成</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0CPQ3W3HK" target="_blank" rel="noopener noreferrer" aria-label="あなたの思い出詰まったブログや手書きの日記がKindleにコピペ式Kindle作成をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://nao25yy.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="奈緒のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="内向型KAZUAKA" data-publication="内向型KAZUAKA の 覚醒の世界" data-author="内向型KAZUAKA" data-books="自分軸で“静かに稼ぐ人”になる思考設計" data-ku="unknown" data-kind="kdp" data-new="1" aria-labelledby="person-113">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-113">内向型KAZUAKA</h2>
+  <p class="publication">内向型KAZUAKA の 覚醒の世界</p>
+  <p class="author-name"><span>Kindle著者名</span>内向型KAZUAKA</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">自分軸で“静かに稼ぐ人”になる思考設計</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GNZV7CXF" target="_blank" rel="noopener noreferrer" aria-label="自分軸で“静かに稼ぐ人”になる思考設計をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://kazuaka.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="内向型KAZUAKAのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="内藤みか（作家）Author TOKYO" data-publication="内藤みかのSubstack体験記" data-author="内藤みか" data-books="チャンスが広がるnoteの書きかた: 楽しく続けてフォロワー8000人！noteは事前準備が9割 わかるnote" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-114">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-114">内藤みか（作家）Author TOKYO</h2>
+  <p class="publication">内藤みかのSubstack体験記</p>
+  <p class="author-name"><span>Kindle著者名</span>内藤みか</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">チャンスが広がるnoteの書きかた: 楽しく続けてフォロワー8000人！noteは事前準備が9割 わかるnote</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DFVNCPB3" target="_blank" rel="noopener noreferrer" aria-label="チャンスが広がるnoteの書きかた: 楽しく続けてフォロワー8000人！noteは事前準備が9割 わかるnoteをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://micanaitoh.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="内藤みか（作家）Author TOKYOのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="波多野 佑介" data-publication="越境未来ラボ" data-author="波多野佑介" data-books="ホモ・モビリタス: 世界を旅して考えた日本の未来" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-115">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-115">波多野 佑介</h2>
+  <p class="publication">越境未来ラボ</p>
+  <p class="author-name"><span>Kindle著者名</span>波多野佑介</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ホモ・モビリタス: 世界を旅して考えた日本の未来</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0DXSY4G9C" target="_blank" rel="noopener noreferrer" aria-label="ホモ・モビリタス: 世界を旅して考えた日本の未来をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://futurexlab.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="波多野 佑介のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="迫佑樹" data-publication="さこ社長のBrainメモ" data-author="迫佑樹" data-books="暗記しない数学: 30万人に読まれたブログがついに書籍化" data-ku="yes" data-kind="kdp" data-new="0" aria-labelledby="person-116">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-116">迫佑樹</h2>
+  <p class="publication">さこ社長のBrainメモ</p>
+  <p class="author-name"><span>Kindle著者名</span>迫佑樹</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">暗記しない数学: 30万人に読まれたブログがついに書籍化</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B06X9LJLPH" target="_blank" rel="noopener noreferrer" aria-label="暗記しない数学: 30万人に読まれたブログがついに書籍化をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://sakobrain.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="迫佑樹のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="八納啓創" data-publication="八納啓創|SNS総フォロー数30万人|一級建築士" data-author="八納啓創" data-books="運がよくなる！部屋のつかい方、整え方 (きずな出版)" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-117">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-117">八納啓創</h2>
+  <p class="publication">八納啓創|SNS総フォロー数30万人|一級建築士</p>
+  <p class="author-name"><span>Kindle著者名</span>八納啓創</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">運がよくなる！部屋のつかい方、整え方 (きずな出版)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GSQ71JX1" target="_blank" rel="noopener noreferrer" aria-label="運がよくなる！部屋のつかい方、整え方 (きずな出版)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://keiyano.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="八納啓創のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="品川皓亮" data-publication="人文知と、生きていく。" data-author="品川皓亮" data-books="資本主義と、生きていく。　歴史と思想で解き明かす「構造的しんどさ」の正体" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-118">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-118">品川皓亮</h2>
+  <p class="publication">人文知と、生きていく。</p>
+  <p class="author-name"><span>Kindle著者名</span>品川皓亮</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">資本主義と、生きていく。　歴史と思想で解き明かす「構造的しんどさ」の正体</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0GNM4TD3J" target="_blank" rel="noopener noreferrer" aria-label="資本主義と、生きていく。　歴史と思想で解き明かす「構造的しんどさ」の正体をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://shinagawa.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="品川皓亮のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="平野敦士カール" data-publication="カール経営塾" data-author="平野敦士カール" data-books="カール教授が女子高生にハーバードのビジネス理論を説明してみた" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-119">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-119">平野敦士カール</h2>
+  <p class="publication">カール経営塾</p>
+  <p class="author-name"><span>Kindle著者名</span>平野敦士カール</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">カール教授が女子高生にハーバードのビジネス理論を説明してみた</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B00HPTHAJI" target="_blank" rel="noopener noreferrer" aria-label="カール教授が女子高生にハーバードのビジネス理論を説明してみたをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://carlhirano.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="平野敦士カールのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="峰川あゆみ" data-publication="峰川あゆみ" data-author="峰川あゆみ" data-books="Seriaで作るプチリメイク雑貨＆インテリア" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-120">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-120">峰川あゆみ</h2>
+  <p class="publication">峰川あゆみ</p>
+  <p class="author-name"><span>Kindle著者名</span>峰川あゆみ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">Seriaで作るプチリメイク雑貨＆インテリア</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B00Y203RGS" target="_blank" rel="noopener noreferrer" aria-label="Seriaで作るプチリメイク雑貨＆インテリアをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://amayumi.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="峰川あゆみのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="放送作家/渡辺龍太" data-publication="テレビの現場で見てきた、話す・書く・発信するための教科書" data-author="渡辺龍太" data-books="おもしろい話「すぐできる」コツ" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-121">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-121">放送作家/渡辺龍太</h2>
+  <p class="publication">テレビの現場で見てきた、話す・書く・発信するための教科書</p>
+  <p class="author-name"><span>Kindle著者名</span>渡辺龍太</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">おもしろい話「すぐできる」コツ</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B08WLJCR71" target="_blank" rel="noopener noreferrer" aria-label="おもしろい話「すぐできる」コツをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://howatanabe.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="放送作家/渡辺龍太のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="堀 正岳 （@mehori）" data-publication="ライフハック・ジャーナル" data-author="堀正岳" data-books="ライフハック大全―――人生と仕事を変える小さな習慣250" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-122">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-122">堀 正岳 （@mehori）</h2>
+  <p class="publication">ライフハック・ジャーナル</p>
+  <p class="author-name"><span>Kindle著者名</span>堀正岳</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">ライフハック大全―――人生と仕事を変える小さな習慣250</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0779KV65Z" target="_blank" rel="noopener noreferrer" aria-label="ライフハック大全―――人生と仕事を変える小さな習慣250をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://mehori.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="堀 正岳 （@mehori）のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="堀もとこ" data-publication="堀もとこ｜今日から運が味方になる心理学" data-author="堀もとこ" data-books="これで毎日がラクになる！ キライな人がいなくなる方法" data-ku="unknown" data-kind="commercial" data-new="0" aria-labelledby="person-123">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span></div>
+  <h2 id="person-123">堀もとこ</h2>
+  <p class="publication">堀もとこ｜今日から運が味方になる心理学</p>
+  <p class="author-name"><span>Kindle著者名</span>堀もとこ</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">これで毎日がラクになる！ キライな人がいなくなる方法</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FHPPX8DH" target="_blank" rel="noopener noreferrer" aria-label="これで毎日がラクになる！ キライな人がいなくなる方法をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://horimotoko.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="堀もとこのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="木下斉@稼ぐまちづくり" data-publication="木下斉｜稼ぐまちづくり" data-author="木下斉" data-books="まちづくり幻想　地域再生はなぜこれほど失敗するのか (SB新書)" data-ku="yes" data-kind="commercial" data-new="0" aria-labelledby="person-124">
+  <div class="card-meta"><span class="ku-badge ku-yes">KU対象</span></div>
+  <h2 id="person-124">木下斉@稼ぐまちづくり</h2>
+  <p class="publication">木下斉｜稼ぐまちづくり</p>
+  <p class="author-name"><span>Kindle著者名</span>木下斉</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">まちづくり幻想　地域再生はなぜこれほど失敗するのか (SB新書)</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B08S2RKXR1" target="_blank" rel="noopener noreferrer" aria-label="まちづくり幻想　地域再生はなぜこれほど失敗するのか (SB新書)をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://hitoshikino.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="木下斉@稼ぐまちづくりのSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="野口嘉則" data-publication="野口嘉則@自己実現の心理学" data-author="野口嘉則" data-books="完全版 鏡の法則" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-125">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-125">野口嘉則</h2>
+  <p class="publication">野口嘉則@自己実現の心理学</p>
+  <p class="author-name"><span>Kindle著者名</span>野口嘉則</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">完全版 鏡の法則</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B01NAN7EX6" target="_blank" rel="noopener noreferrer" aria-label="完全版 鏡の法則をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://ynoguchi.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="野口嘉則のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="國光宏尚" data-publication="國光宏尚 クリプトおじさん (Hiro Kunimitsu)" data-author="國光宏尚" data-books="メタバースとWeb3" data-ku="unknown" data-kind="commercial" data-new="1" aria-labelledby="person-126">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-126">國光宏尚</h2>
+  <p class="publication">國光宏尚 クリプトおじさん (Hiro Kunimitsu)</p>
+  <p class="author-name"><span>Kindle著者名</span>國光宏尚</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">メタバースとWeb3</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B09W9B5Q6H" target="_blank" rel="noopener noreferrer" aria-label="メタバースとWeb3をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">商業出版</span><a class="substack-link" href="https://hkunimitsu.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="國光宏尚のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article>
+<article class="author-card" data-name="澤 哲也" data-publication="ざワラジオ" data-author="澤 哲也" data-books="天才３歳児ヒロの日常 隣の宇宙にご用心 言葉のスケッチⅠ――視る" data-ku="unknown" data-kind="kdp" data-new="1" aria-labelledby="person-127">
+  <div class="card-meta"><span class="ku-badge ku-unknown">KU不明</span><span class="new-label">今回追加</span></div>
+  <h2 id="person-127">澤 哲也</h2>
+  <p class="publication">ざワラジオ</p>
+  <p class="author-name"><span>Kindle著者名</span>澤 哲也</p>
+  <div class="book-list"><h3>確認できた著書</h3><div class="book"><p class="book-title">天才３歳児ヒロの日常</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0FY4NNLMQ" target="_blank" rel="noopener noreferrer" aria-label="天才３歳児ヒロの日常をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div><div class="book"><p class="book-title">隣の宇宙にご用心</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0G4T1XXJS" target="_blank" rel="noopener noreferrer" aria-label="隣の宇宙にご用心をAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div><div class="book"><p class="book-title">言葉のスケッチⅠ――視る</p><a class="amazon-link" href="https://www.amazon.co.jp/dp/B0H9VD6T4K" target="_blank" rel="noopener noreferrer" aria-label="言葉のスケッチⅠ――視るをAmazonで見る（新しいタブ）">Amazonで見る<span aria-hidden="true"> ↗</span></a></div></div>
+  <div class="card-bottom"><span class="kind-label">KDP個人出版</span><a class="substack-link" href="https://zawastyle.substack.com/" target="_blank" rel="noopener noreferrer" aria-label="澤 哲也のSubstackを見る（新しいタブ）">Substackを見る<span aria-hidden="true"> ↗</span></a></div>
+</article></div>
+<section class="empty" id="empty" hidden><h2>条件に合う著者が見つかりませんでした</h2><p>別の言葉で検索するか、絞り込み条件を変更してください。</p></section>
+</main>
+<footer class="site-footer"><p>この一覧は公開Web情報をもとに独自に調査したものです。完全網羅ではありません。書名は確認できた代表例で、全著作ではありません。出版形態は掲載作品からの概分類で、一部推定を含みます。</p><p>「KU対象」は掲載作品の少なくとも1冊で確認時点の読み放題対象を確認、「過去にKU確認」は過去の対象情報のみ確認できたものです。著者の全作品が対象という意味ではありません。「KU不明」は対象外を意味しません。販売・KU・公開設定は変更される場合があります。掲載内容に誤りがある場合は修正します。</p><p>Substack・Amazonのリンクは新しいタブで開きます。一覧はオフラインでも読めますが、リンク先を見るにはインターネット接続が必要です。</p><a class="back-top" href="#top">ページの先頭へ戻る ↑</a></footer>
+</div>
+<script>
+(()=>{'use strict';
+const form=document.getElementById('filters');
+const query=document.getElementById('query'),ku=document.getElementById('ku-filter'),kind=document.getElementById('kind-filter'),sort=document.getElementById('sort');
+const container=document.getElementById('directory'),count=document.getElementById('result-count'),empty=document.getElementById('empty'),reset=document.getElementById('reset');
+const normalize=s=>s.normalize('NFKC').toLocaleLowerCase('ja').trim();
+const cards=Array.from(container.children).map((node,index)=>({node,index,name:node.dataset.name,publication:node.dataset.publication,ku:node.dataset.ku,kind:node.dataset.kind,isNew:node.dataset.new==='1',search:normalize([node.dataset.name,node.dataset.publication,node.dataset.author,node.dataset.books].join(' '))}));
+const collator=new Intl.Collator('ja',{numeric:true,sensitivity:'base'});
+function refresh(){
+ const words=normalize(query.value).split(/\s+/u).filter(Boolean);
+ let found=0;
+ const sorted=cards.slice().sort((a,b)=>{let first=0;if(sort.value==='publication')first=collator.compare(a.publication,b.publication);else if(sort.value==='ku')first=Number(b.ku==='yes')-Number(a.ku==='yes');else if(sort.value==='new')first=Number(b.isNew)-Number(a.isNew);return first||collator.compare(a.name,b.name)||a.index-b.index;});
+ const frag=document.createDocumentFragment();
+ for(const c of sorted){const show=words.every(w=>c.search.includes(w))&&(ku.value==='all'||ku.value===c.ku)&&(kind.value==='all'||kind.value===c.kind);c.node.hidden=!show;if(show)found++;frag.append(c.node);}
+ container.append(frag);count.textContent=found+' 人を表示 / 全'+cards.length+'人';empty.hidden=found!==0;
+}
+form.addEventListener('submit',event=>{event.preventDefault();refresh();});
+form.addEventListener('input',refresh);form.addEventListener('change',refresh);
+reset.addEventListener('click',()=>{form.reset();refresh();query.focus();});
+form.hidden=false;reset.hidden=false;refresh();
+})();
+</script>
 </body>
 </html>
